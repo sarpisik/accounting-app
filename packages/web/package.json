@@ -38,10 +38,11 @@
     "main": "n/a",
     "scripts": {
         "clean": "gatsby clean",
+        "serve": "gatsby serve",
         "start": "npm run develop",
         "build": "npm run clean && gatsby build",
         "dev": "npm run clean && gatsby develop",
-        "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
+        "format": "prettier --write \"{gatsby-*.js,src/**/*.js,src/**/*.ts,src/**/*.tsx}\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
