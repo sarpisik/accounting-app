@@ -1,5 +1,4 @@
-import { IUser } from '@entities/User';
-
+import { User as IUser } from '@shared-types/entities';
 
 export interface IUserDao {
     getOne: (email: string) => Promise<IUser | null>;
@@ -10,8 +9,6 @@ export interface IUserDao {
 }
 
 class UserDao implements IUserDao {
-
-
     /**
      * @param email
      */
@@ -20,7 +17,6 @@ class UserDao implements IUserDao {
         return [] as any;
     }
 
-
     /**
      *
      */
@@ -28,7 +24,6 @@ class UserDao implements IUserDao {
         // TODO
         return [] as any;
     }
-
 
     /**
      *
@@ -39,7 +34,6 @@ class UserDao implements IUserDao {
         return {} as any;
     }
 
-
     /**
      *
      * @param user
@@ -48,7 +42,6 @@ class UserDao implements IUserDao {
         // TODO
         return {} as any;
     }
-
 
     /**
      *
