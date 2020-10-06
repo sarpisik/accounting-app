@@ -68,7 +68,7 @@
 				"Layers": [],
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-accounting-prod-162715-deployment",
+					"S3Bucket": "amplify-accounting-dev-171440-deployment",
 					"S3Key": "amplify-builds/githubAuthLambda-304234786b6f6c586271-build.zip"
 				}
 			}

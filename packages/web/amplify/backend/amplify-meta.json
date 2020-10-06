@@ -1,53 +1,92 @@
 {
-    "providers": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-accounting-dev-171440-authRole",
-            "UnauthRoleArn": "arn:aws:iam::849999570621:role/amplify-accounting-dev-171440-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::849999570621:role/amplify-accounting-dev-171440-authRole",
-            "Region": "eu-central-1",
-            "DeploymentBucketName": "amplify-accounting-dev-171440-deployment",
-            "UnauthRoleName": "amplify-accounting-dev-171440-unauthRole",
-            "StackName": "amplify-accounting-dev-171440",
-            "StackId": "arn:aws:cloudformation:eu-central-1:849999570621:stack/amplify-accounting-dev-171440/a959cfc0-07e6-11eb-b3ab-068ad68d7426",
-            "AmplifyAppId": "d20v01tre1srtp"
-        },
-        "categories": {
-            "auth": {
-                "cognito64132ec9": {}
-            },
-            "function": {
-                "githubAuthLambda": {}
-            }
-        }
-    },
-    "function": {
-        "githubAuthLambda": {
-            "build": true,
-            "providerPlugin": "awscloudformation",
-            "service": "Lambda",
-            "dependsOn": []
-        }
-    },
-    "auth": {
-        "cognito64132ec9": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation"
-        }
-    },
-    "api": {
-        "githubAuth": {
-            "service": "API Gateway",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "function",
-                    "resourceName": "githubAuthLambda",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        }
-    }
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-accounting-dev-171440-authRole",
+			"UnauthRoleArn": "arn:aws:iam::849999570621:role/amplify-accounting-dev-171440-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::849999570621:role/amplify-accounting-dev-171440-authRole",
+			"Region": "eu-central-1",
+			"DeploymentBucketName": "amplify-accounting-dev-171440-deployment",
+			"UnauthRoleName": "amplify-accounting-dev-171440-unauthRole",
+			"StackName": "amplify-accounting-dev-171440",
+			"StackId": "arn:aws:cloudformation:eu-central-1:849999570621:stack/amplify-accounting-dev-171440/a959cfc0-07e6-11eb-b3ab-068ad68d7426",
+			"AmplifyAppId": "d20v01tre1srtp"
+		},
+		"categories": {
+			"auth": {
+				"cognito64132ec9": {}
+			},
+			"function": {
+				"githubAuthLambda": {}
+			}
+		}
+	},
+	"function": {
+		"githubAuthLambda": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [],
+			"output": {
+				"Region": "eu-central-1",
+				"Arn": "arn:aws:lambda:eu-central-1:849999570621:function:githubAuthLambda-dev",
+				"Name": "githubAuthLambda-dev",
+				"LambdaExecutionRole": "accountingLambdaRole5d6bbb85-dev"
+			},
+			"lastPushTimeStamp": "2020-10-06T15:35:00.121Z",
+			"lastBuildTimeStamp": "2020-10-06T15:34:22.256Z",
+			"lastPackageTimeStamp": "2020-10-06T15:34:22.802Z",
+			"distZipFilename": "githubAuthLambda-304234786b6f6c586271-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/function/githubAuthLambda-cloudformation-template.json",
+				"logicalId": "functiongithubAuthLambda"
+			},
+			"lastPushDirHash": "aZQGiDzbggxfG45HFXPgaZOucQk="
+		}
+	},
+	"auth": {
+		"cognito64132ec9": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"AppClientSecret": "hfa6iesg0opp4itn000dge2ekpm19roidhq134afe1h5umao608",
+				"UserPoolId": "eu-central-1_5zWJ8XlF9",
+				"AppClientIDWeb": "1gf5dn6ncfr5do9gi0o4r9febe",
+				"AppClientID": "6fq9apfun20bdg7hlfacc9fn06",
+				"IdentityPoolId": "eu-central-1:4f12c1c0-54a1-4547-804a-0cf03cad6bc2",
+				"IdentityPoolName": "accounting_identitypool_0620c245__dev",
+				"UserPoolName": "accounting_userpool_0620c245"
+			},
+			"lastPushTimeStamp": "2020-10-06T15:35:00.117Z",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/auth/cognito64132ec9-cloudformation-template.yml",
+				"logicalId": "authcognito64132ec9"
+			}
+		}
+	},
+	"api": {
+		"githubAuth": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "githubAuthLambda",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/api/githubAuth-cloudformation-template.json",
+				"logicalId": "apigithubAuth"
+			},
+			"lastPushTimeStamp": "2020-10-06T15:35:00.118Z",
+			"output": {
+				"ApiName": "githubAuth",
+				"RootUrl": "https://mab4lx4rig.execute-api.eu-central-1.amazonaws.com/dev",
+				"ApiId": "mab4lx4rig"
+			}
+		}
+	}
 }

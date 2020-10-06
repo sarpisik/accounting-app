@@ -71,16 +71,16 @@
 		"functiongithubAuthLambda": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-accounting-prod-162715-deployment/amplify-cfn-templates/function/githubAuthLambda-cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/function/githubAuthLambda-cloudformation-template.json",
 				"Parameters": {
-					"env": "prod"
+					"env": "dev"
 				}
 			}
 		},
 		"authcognito64132ec9": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-accounting-prod-162715-deployment/amplify-cfn-templates/auth/cognito64132ec9-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/auth/cognito64132ec9-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "accounting_identitypool_0620c245",
 					"allowUnauthenticatedIdentities": false,
@@ -117,14 +117,14 @@
 							"Arn"
 						]
 					},
-					"env": "prod"
+					"env": "dev"
 				}
 			}
 		},
 		"apigithubAuth": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-accounting-prod-162715-deployment/amplify-cfn-templates/api/githubAuth-cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/api/githubAuth-cloudformation-template.json",
 				"Parameters": {
 					"authRoleName": {
 						"Ref": "AuthRoleName"
@@ -144,7 +144,7 @@
 							"Outputs.Arn"
 						]
 					},
-					"env": "prod"
+					"env": "dev"
 				}
 			}
 		},
