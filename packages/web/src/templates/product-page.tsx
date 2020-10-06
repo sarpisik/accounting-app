@@ -7,7 +7,7 @@ import Testimonials from '../components/Testimonials';
 import Pricing from '../components/Pricing';
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 
-import { User } from 'shared-types';
+import { User } from '../../../shared-types';
 const user: User = {
     name: 'sarp',
 };
