@@ -12,7 +12,55 @@
 			"AmplifyAppId": "d20v01tre1srtp"
 		}
 	},
-	"function": {},
+	"function": {
+		"githubLambda": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [],
+			"lastBuildTimeStamp": "2020-10-07T17:14:36.632Z",
+			"lastPackageTimeStamp": "2020-10-07T17:14:37.136Z",
+			"distZipFilename": "githubLambda-706f585a7a5953714254-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/function/githubLambda-cloudformation-template.json",
+				"logicalId": "functiongithubLambda"
+			},
+			"lastPushTimeStamp": "2020-10-07T17:16:15.632Z",
+			"output": {
+				"Region": "eu-central-1",
+				"Arn": "arn:aws:lambda:eu-central-1:849999570621:function:githubLambda-dev",
+				"Name": "githubLambda-dev",
+				"LambdaExecutionRole": "accountingLambdaRole8a8183d6-dev"
+			},
+			"lastPushDirHash": "N8mkM1D13RVqRlS8vnjJ4y9H3fI="
+		}
+	},
 	"auth": {},
-	"api": {}
+	"api": {
+		"githubAuth": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "githubLambda",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/api/githubAuth-cloudformation-template.json",
+				"logicalId": "apigithubAuth"
+			},
+			"lastPushTimeStamp": "2020-10-07T17:16:15.632Z",
+			"output": {
+				"ApiName": "githubAuth",
+				"RootUrl": "https://5jnur6x57d.execute-api.eu-central-1.amazonaws.com/dev",
+				"ApiId": "5jnur6x57d"
+			},
+			"lastPushDirHash": "q2VIJ5IuQxr9oPMa1j5byMLbK68="
+		}
+	}
 }

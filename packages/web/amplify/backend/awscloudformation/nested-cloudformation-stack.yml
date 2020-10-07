@@ -67,6 +67,42 @@
 					]
 				}
 			}
+		},
+		"functiongithubLambda": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/function/githubLambda-cloudformation-template.json",
+				"Parameters": {
+					"env": "dev"
+				}
+			}
+		},
+		"apigithubAuth": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/amplify-accounting-dev-171440-deployment/amplify-cfn-templates/api/githubAuth-cloudformation-template.json",
+				"Parameters": {
+					"authRoleName": {
+						"Ref": "AuthRoleName"
+					},
+					"unauthRoleName": {
+						"Ref": "UnauthRoleName"
+					},
+					"functiongithubLambdaName": {
+						"Fn::GetAtt": [
+							"functiongithubLambda",
+							"Outputs.Name"
+						]
+					},
+					"functiongithubLambdaArn": {
+						"Fn::GetAtt": [
+							"functiongithubLambda",
+							"Outputs.Arn"
+						]
+					},
+					"env": "dev"
+				}
+			}
 		}
 	},
 	"Outputs": {

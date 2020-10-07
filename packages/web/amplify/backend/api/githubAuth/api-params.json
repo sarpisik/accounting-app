@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/auth",
+            "lambdaFunction": "githubLambda",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "githubAuth",
+    "apiName": "githubAuth",
+    "functionArns": [
+        {
+            "lambdaFunction": "githubLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-accounting-dev-171440-authRole",
+        "unAuthRoleName": "amplify-accounting-dev-171440-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "githubLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "7ac21a1b"
+}
