@@ -10,14 +10,6 @@
             "StackName": "amplify-accounting-prod-162715",
             "StackId": "arn:aws:cloudformation:eu-central-1:849999570621:stack/amplify-accounting-prod-162715/099dfe30-07e0-11eb-9276-02c1cbf7d3f2",
             "AmplifyAppId": "d20v01tre1srtp"
-        },
-        "categories": {
-            "auth": {
-                "cognito64132ec9": {}
-            },
-            "function": {
-                "githubAuthLambda": {}
-            }
         }
     },
     "dev": {
