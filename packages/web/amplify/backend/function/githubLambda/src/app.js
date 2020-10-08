@@ -32,14 +32,14 @@ app.use(function (req, res, next) {
 });
 
 // NetlifyCMS doesn't use this root page. It's only for dev purposes
-app.get('/', (req, res) => {
+app.get('/github', (req, res) => {
     res.send(`<a href="${authUrl}">Login with Github</a>`);
 });
 
 // NetlifyCMS expects to land on a page at /auth.
-app.get('/auth', (req, res) => res.redirect(authUrl));
+app.get('/github/auth', (req, res) => res.redirect(authUrl));
 
-app.get('/auth/callback', async (req, res) => {
+app.get('/github/auth/callback', async (req, res) => {
     const data = {
         code: req.query.code,
         client_id,

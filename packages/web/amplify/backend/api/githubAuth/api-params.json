@@ -1,7 +1,7 @@
 {
     "paths": [
         {
-            "name": "/auth",
+            "name": "/github",
             "lambdaFunction": "githubLambda",
             "privacy": {
                 "open": true
@@ -31,5 +31,5 @@
             ]
         }
     ],
-    "uuid": "7ac21a1b"
+    "uuid": "06b4c19c"
 }
