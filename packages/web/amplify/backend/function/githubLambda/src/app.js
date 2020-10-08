@@ -66,8 +66,8 @@ app.get('/github/auth/callback', async (req, res) => {
         const script = `
     <script>
     (function() {
-      function recieveMessage(e) {
-        console.log("recieveMessage %o", e);
+      function receiveMessage(e) {
+        console.log("receiveMessage %o", e);
         
         // send message to main window with the app
         window.opener.postMessage(
@@ -75,8 +75,9 @@ app.get('/github/auth/callback', async (req, res) => {
           e.origin
         );
       }
-
-      window.addEventListener("message", recieveMessage, false);
+      window.removeEventListener("message", receiveMessage,false);
+      window.addEventListener("message", receiveMessage, false);
+      console.log("Sending message: %o", "github")
       window.opener.postMessage("authorizing:github", "*");
     })()
     </script>`;

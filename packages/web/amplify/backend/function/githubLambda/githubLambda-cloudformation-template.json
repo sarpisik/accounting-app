@@ -69,7 +69,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-accounting-dev-171440-deployment",
-					"S3Key": "amplify-builds/githubLambda-35785a763154456e6d56-build.zip"
+					"S3Key": "amplify-builds/githubLambda-5652416e58374872786d-build.zip"
 				}
 			}
 		},
