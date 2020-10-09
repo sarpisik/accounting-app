@@ -1,14 +1,19 @@
-const _ = require('lodash');
-const path = require('path');
-const { createFilePath } = require('gatsby-source-filesystem');
-const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+import _ from 'lodash';
+import path from 'path';
+import { createFilePath } from 'gatsby-source-filesystem';
+import { fmImagesToRelative } from 'gatsby-remark-relative-images';
+import { GatsbyNode } from 'gatsby';
+import { MarkdownPagesQuery } from '../src/types/generated';
 
-exports.createPages = ({ actions, graphql }) => {
+export const createPages: GatsbyNode['createPages'] = ({
+    actions,
+    graphql,
+}) => {
     const { createPage } = actions;
 
-    return graphql(`
-        {
-            allMarkdownRemark(limit: 1000) {
+    return graphql<MarkdownPagesQuery>(`
+        query MarkdownPages {
+            pages: allMarkdownRemark(limit: 1000) {
                 edges {
                     node {
                         id
@@ -29,12 +34,13 @@ exports.createPages = ({ actions, graphql }) => {
             return Promise.reject(result.errors);
         }
 
-        const posts = result.data.allMarkdownRemark.edges;
+        const posts = result.data.pages.edges;
 
         posts.forEach((edge) => {
             const id = edge.node.id;
             createPage({
                 path: edge.node.fields.slug,
+                // @ts-ignore
                 tags: edge.node.frontmatter.tags,
                 component: path.resolve(
                     `src/templates/${String(
@@ -42,9 +48,7 @@ exports.createPages = ({ actions, graphql }) => {
                     )}.tsx`
                 ),
                 // additional data can be passed via context
-                context: {
-                    id,
-                },
+                context: { id },
             });
         });
 
@@ -74,7 +78,7 @@ exports.createPages = ({ actions, graphql }) => {
     });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+export const onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
     fmImagesToRelative(node); // convert image paths for gatsby images
 
