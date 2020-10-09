@@ -4,6 +4,9 @@ name: english name
 title:
   en: english title
   tr: turkish title
+slug:
+  en: english-title
+  tr: turkish-title
 date: 2020-10-09T13:22:08.616Z
 description: test description
 featuredpost: false
