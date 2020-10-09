@@ -20,6 +20,7 @@ collections:
       folder: 'packages/web/src/pages/blog'
       create: true
       slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+      identifier_field: name
       fields:
           - {
                 label: 'Template Key',
@@ -27,13 +28,39 @@ collections:
                 widget: 'hidden',
                 default: 'blog-post',
             }
+          - { label: 'Name', name: 'name', widget: 'string' }
           - label: 'Title'
             name: 'title'
             widget: 'object'
             fields:
                 - { label: 'EN', name: 'en', widget: 'string' }
                 - { label: 'TR', name: 'tr', widget: 'string' }
-          # - {label: "Title", name: "title", widget: "string"}
+          - label: 'Slug'
+            name: 'slug'
+            widget: 'object'
+            fields:
+                - {
+                      label: 'EN',
+                      name: 'en',
+                      widget: 'string',
+                      required: true,
+                      pattern:
+                          [
+                              '^[a-z0-9]+(?:-[a-z0-9]+)*$',
+                              'A slug can have no spaces or special characters',
+                          ],
+                  }
+                - {
+                      label: 'TR',
+                      name: 'tr',
+                      widget: 'string',
+                      required: true,
+                      pattern:
+                          [
+                              '^[a-z0-9]+(?:-[a-z0-9]+)*$',
+                              'A slug can have no spaces or special characters',
+                          ],
+                  }
           - { label: 'Publish Date', name: 'date', widget: 'datetime' }
           - { label: 'Description', name: 'description', widget: 'text' }
           - { label: 'Featured Post', name: 'featuredpost', widget: 'boolean' }

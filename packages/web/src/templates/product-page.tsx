@@ -44,7 +44,7 @@ export const ProductPageTemplate = ({
                     padding: '1rem',
                 }}
             >
-                {title}
+                {title.en}
             </h2>
         </div>
         <section className="section section--gradient">
@@ -179,7 +179,9 @@ export const productPageQuery = graphql`
     query ProductPage($id: String!) {
         markdownRemark(id: { eq: $id }) {
             frontmatter {
-                title
+                title {
+                    en
+                }
                 image {
                     childImageSharp {
                         fluid(maxWidth: 2048, quality: 100) {

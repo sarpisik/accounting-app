@@ -17,7 +17,7 @@ class TagRoute extends React.Component {
         // @ts-ignore
         const tag = this.props.pageContext.tag;
         // @ts-ignore
-        const title = this.props.data.site.siteMetadata.title;
+        const title = this.props.data.site.siteMetadata.title.en;
         // @ts-ignore
         const totalCount = this.props.data.allMarkdownRemark.totalCount;
         const tagHeader = `${totalCount} post${
@@ -72,7 +72,9 @@ export const tagPageQuery = graphql`
                         slug
                     }
                     frontmatter {
-                        title
+                        title {
+                            en
+                        }
                     }
                 }
             }

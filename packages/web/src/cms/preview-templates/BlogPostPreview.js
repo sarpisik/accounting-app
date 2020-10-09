@@ -4,14 +4,23 @@ import { BlogPostTemplate } from '../../templates/blog-post';
 
 const BlogPostPreview = ({ entry, widgetFor }) => {
     const tags = entry.getIn(['data', 'tags']);
-    console.log(entry.getIn(['data']).toJS());
+    const titles = entry.getIn(['data', 'title'])?.toJS() ?? {};
+
     return (
-        <BlogPostTemplate
-            content={widgetFor('body')}
-            description={entry.getIn(['data', 'description'])}
-            tags={tags && tags.toJS()}
-            title={entry.getIn(['data', 'title'])}
-        />
+        <React.Fragment>
+            <BlogPostTemplate
+                content={widgetFor('body')}
+                description={entry.getIn(['data', 'description'])}
+                tags={tags && tags.toJS()}
+                title={titles.en}
+            />
+            <BlogPostTemplate
+                content={widgetFor('body')}
+                description={entry.getIn(['data', 'description'])}
+                tags={tags && tags.toJS()}
+                title={titles.tr}
+            />
+        </React.Fragment>
     );
 };
 

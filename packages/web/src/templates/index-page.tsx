@@ -133,13 +133,15 @@ IndexPageTemplate.propTypes = {
 };
 
 const IndexPage = ({ data }) => {
+    console.log(data);
+    
     const { frontmatter } = data.markdownRemark;
 
     return (
         <Layout>
             <IndexPageTemplate
                 image={frontmatter.image}
-                title={frontmatter.title}
+                title={frontmatter.title.en}
                 heading={frontmatter.heading}
                 subheading={frontmatter.subheading}
                 mainpitch={frontmatter.mainpitch}
@@ -164,7 +166,9 @@ export const pageQuery = graphql`
     query IndexPageTemplate {
         markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
             frontmatter {
-                title
+                title {
+                    en
+                }
                 image {
                     childImageSharp {
                         fluid(maxWidth: 2048, quality: 100) {
