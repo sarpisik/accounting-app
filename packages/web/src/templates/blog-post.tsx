@@ -78,7 +78,7 @@ const BlogPost = ({ data }) => {
                     </Helmet>
                 }
                 tags={post.frontmatter.tags}
-                title={post.frontmatter.title}
+                title={post.frontmatter.title.tr}
             />
         </Layout>
     );
@@ -99,7 +99,10 @@ export const pageQuery = graphql`
             html
             frontmatter {
                 date(formatString: "MMMM DD, YYYY")
-                title
+                title {
+                    en
+                    tr
+                }
                 description
                 tags
             }

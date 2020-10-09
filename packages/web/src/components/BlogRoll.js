@@ -28,7 +28,7 @@ class BlogRoll extends React.Component {
                                                     image:
                                                         post.frontmatter
                                                             .featuredimage,
-                                                    alt: `featured image thumbnail for post ${post.frontmatter.title}`,
+                                                    alt: `featured image thumbnail for post ${post.frontmatter.title?.en}`,
                                                 }}
                                             />
                                         </div>
@@ -38,7 +38,7 @@ class BlogRoll extends React.Component {
                                             className="title has-text-primary is-size-4"
                                             to={post.fields.slug}
                                         >
-                                            {post.frontmatter.title}
+                                            {post.frontmatter.title?.en}
                                         </Link>
                                         <span> &bull; </span>
                                         <span className="subtitle is-size-5 is-block">
@@ -91,7 +91,10 @@ export default () => (
                                 slug
                             }
                             frontmatter {
-                                title
+                                title {
+                                    en
+                                    tr
+                                }
                                 templateKey
                                 date(formatString: "MMMM DD, YYYY")
                                 featuredpost
