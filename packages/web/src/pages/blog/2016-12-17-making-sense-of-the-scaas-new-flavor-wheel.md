@@ -1,5 +1,6 @@
 ---
 templateKey: blog-post
+name: Making sense of the SCAA’s new Flavor Wheel
 title:
   en: Making sense of the SCAA’s new Flavor Wheel
   tr: SCAA’nın yeni Lezzet çarkını anlamlandırmak
