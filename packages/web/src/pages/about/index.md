@@ -1,9 +1,9 @@
 ---
-templateKey: 'about-page'
+templateKey: about-page
 path: /about
 title:
-    en: About our values
-    tr: About our values
+  en: About our values
+  tr: Değerlerimiz Hakkında
 ---
 
 ### Shade-grown coffee
