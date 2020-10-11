@@ -1,10 +1,10 @@
 const path = require('path');
-const _ = require('lodash');
+// const _ = require('lodash');
 
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
-const config = require('./gatsby-config');
+// const config = require('./gatsby-config');
 
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions;
@@ -20,8 +20,17 @@ exports.createPages = ({ actions, graphql }) => {
                         }
                         frontmatter {
                             templateKey
+                            slug {
+                                en
+                                tr
+                            }
                         }
                     }
+                }
+            }
+            site {
+                siteMetadata {
+                    locales
                 }
             }
         }
@@ -31,22 +40,27 @@ exports.createPages = ({ actions, graphql }) => {
             return Promise.reject(result.errors);
         }
         const posts = result.data.allMarkdownRemark.edges;
+        const locales = result.data.site.siteMetadata.locales;
 
         posts.forEach((edge) => {
-            const id = edge.node.id;
-            // console.log(edge.node.fields.slug);
-            createPage({
-                path: edge.node.fields.slug,
-                tags: edge.node.frontmatter.tags,
-                component: path.resolve(
-                    `src/templates/${String(
-                        edge.node.frontmatter.templateKey
-                    )}.tsx`
-                ),
-                // additional data can be passed via context
-                context: {
-                    id,
-                },
+            const node = edge.node;
+            const id = node.id;
+            const { templateKey, slug } = node.frontmatter;
+
+            locales.forEach((locale) => {
+                const isLandingPage = templateKey === 'index-page';
+                const isBlogPost = templateKey === 'blog-post';
+                const _path = `/${locale.concat(isBlogPost ? '/blog' : '')}/${
+                    isLandingPage ? '' : slug[locale]
+                }`;
+                createPage({
+                    path: _path,
+                    component: path.resolve(
+                        `src/templates/${String(templateKey)}.tsx`
+                    ),
+                    // additional data can be passed via context
+                    context: { id, locale },
+                });
             });
         });
     });
@@ -68,23 +82,23 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 };
 
-exports.onCreatePage = async ({
-    page,
-    actions: { createPage, deletePage },
-}) => {
-    // console.log(page);
-    // Delete the original page (since we are gonna create localized versions of it)
-    await deletePage(page);
+// exports.onCreatePage = async ({
+//     page,
+//     actions: { createPage, deletePage },
+// }) => {
+//     // console.log(page);
+//     // Delete the original page (since we are gonna create localized versions of it)
+//     await deletePage(page);
 
-    // Create one page for each locale
-    await Promise.all(
-        config.siteMetadata.locales.map(async (lang) => {
-            const localizedPath = `/${lang}${page.path}`;
+//     // Create one page for each locale
+//     await Promise.all(
+//         config.siteMetadata.locales.map(async (lang) => {
+//             const localizedPath = `/${lang}${page.path}`;
 
-            await createPage({
-                ...page,
-                path: localizedPath,
-            });
-        })
-    );
-};
+//             await createPage({
+//                 ...page,
+//                 path: localizedPath,
+//             });
+//         })
+//     );
+// };
