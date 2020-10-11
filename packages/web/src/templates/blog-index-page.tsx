@@ -1,5 +1,5 @@
-import { graphql } from 'gatsby';
 import React from 'react';
+import { graphql } from 'gatsby';
 import BlogRoll from '../components/BlogRoll';
 import Layout from '../components/Layout';
 import { BlogIndexPageTemplateQuery } from '../types/generated';

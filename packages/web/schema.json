@@ -1206,6 +1206,16 @@
                                 "defaultValue": null
                             },
                             {
+                                "name": "context",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "SitePageContextFilterInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
                                 "name": "pluginCreator",
                                 "description": null,
                                 "type": {
@@ -3580,11 +3590,81 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "name",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "StringQueryOperatorInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "slug",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "MarkdownRemarkFrontmatterSlugFilterInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "date",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "DateQueryOperatorInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "description",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "StringQueryOperatorInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "featuredpost",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "BooleanQueryOperatorInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "featuredimage",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FileFilterInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "tags",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "StringQueryOperatorInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "path",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "StringQueryOperatorInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -3630,16 +3710,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "StringQueryOperatorInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "intro",
                         "description": null,
                         "type": {
@@ -3655,16 +3725,6 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "MarkdownRemarkFrontmatterMainFilterInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "path",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "StringQueryOperatorInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -3695,56 +3755,6 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "MarkdownRemarkFrontmatterPricingFilterInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "name",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "StringQueryOperatorInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "date",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "DateQueryOperatorInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "featuredpost",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "BooleanQueryOperatorInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "featuredimage",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "FileFilterInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "tags",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "StringQueryOperatorInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -8715,160 +8725,24 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "slug",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "MarkdownRemarkFrontmatterSlug",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "image",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "File",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "heading",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "subheading",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "mainpitch",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "MarkdownRemarkFrontmatterMainpitch",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "description",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "intro",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "MarkdownRemarkFrontmatterIntro",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "main",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "MarkdownRemarkFrontmatterMain",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "path",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "testimonials",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "OBJECT",
-                                "name": "MarkdownRemarkFrontmatterTestimonials",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "full_image",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "File",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "pricing",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "MarkdownRemarkFrontmatterPricing",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "name",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "slug",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "MarkdownRemarkFrontmatterSlug",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -8928,6 +8802,18 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "description",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "featuredpost",
                         "description": null,
                         "args": [],
@@ -8963,6 +8849,130 @@
                                 "name": "String",
                                 "ofType": null
                             }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "path",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "image",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "File",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "heading",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "subheading",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "mainpitch",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "MarkdownRemarkFrontmatterMainpitch",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "intro",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "MarkdownRemarkFrontmatterIntro",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "main",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "MarkdownRemarkFrontmatterMain",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "testimonials",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "MarkdownRemarkFrontmatterTestimonials",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "full_image",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "File",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "pricing",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "MarkdownRemarkFrontmatterPricing",
+                            "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -11020,6 +11030,12 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "childMarkdownRemark___frontmatter___name",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "childMarkdownRemark___frontmatter___slug___en",
                         "description": null,
                         "isDeprecated": false,
@@ -11027,6 +11043,252 @@
                     },
                     {
                         "name": "childMarkdownRemark___frontmatter___slug___tr",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___date",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___description",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredpost",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___sourceInstanceName",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___absolutePath",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___relativePath",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___extension",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___size",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___prettySize",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___modifiedTime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___accessTime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___changeTime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___birthTime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___root",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___dir",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___base",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___ext",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___name",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___relativeDirectory",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___dev",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___mode",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___nlink",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___uid",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___gid",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___rdev",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___ino",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___atimeMs",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___mtimeMs",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___ctimeMs",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___atime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___mtime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___ctime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___birthtime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___birthtimeMs",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___blksize",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___blocks",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___publicURL",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___id",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___featuredimage___children",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___tags",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "childMarkdownRemark___frontmatter___path",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -11272,12 +11534,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "childMarkdownRemark___frontmatter___description",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "childMarkdownRemark___frontmatter___intro___blurbs",
                         "description": null,
                         "isDeprecated": false,
@@ -11303,12 +11559,6 @@
                     },
                     {
                         "name": "childMarkdownRemark___frontmatter___main___description",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___path",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -11561,246 +11811,6 @@
                     },
                     {
                         "name": "childMarkdownRemark___frontmatter___pricing___plans",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___name",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___date",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredpost",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___sourceInstanceName",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___absolutePath",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___relativePath",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___extension",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___size",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___prettySize",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___modifiedTime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___accessTime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___changeTime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___birthTime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___root",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___dir",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___base",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___ext",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___name",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___relativeDirectory",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___dev",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___mode",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___nlink",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___uid",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___gid",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___rdev",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___ino",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___atimeMs",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___mtimeMs",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___ctimeMs",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___atime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___mtime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___ctime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___birthtime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___birthtimeMs",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___blksize",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___blocks",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___publicURL",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___id",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___featuredimage___children",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "childMarkdownRemark___frontmatter___tags",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -16522,6 +16532,27 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+                "name": "SitePageContextFilterInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "StringQueryOperatorInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
                 "name": "SitePluginFilterInput",
                 "description": null,
                 "fields": null,
@@ -17324,6 +17355,18 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "context",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "SitePageContext",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "pluginCreator",
                         "description": null,
                         "args": [],
@@ -17368,6 +17411,29 @@
                         "ofType": null
                     }
                 ],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "SitePageContext",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
                 "enumValues": null,
                 "possibleTypes": null
             },
@@ -18196,6 +18262,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "context",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "SitePageContextFilterInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "pluginCreator",
                         "description": null,
                         "type": {
@@ -18825,6 +18901,12 @@
                     },
                     {
                         "name": "isCreatedByStatefulCreatePages",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "context___id",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -20968,6 +21050,12 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "frontmatter___name",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "frontmatter___slug___en",
                         "description": null,
                         "isDeprecated": false,
@@ -20975,6 +21063,402 @@
                     },
                     {
                         "name": "frontmatter___slug___tr",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___date",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___description",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredpost",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___sourceInstanceName",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___absolutePath",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___relativePath",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___extension",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___size",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___prettySize",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___modifiedTime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___accessTime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___changeTime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___birthTime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___root",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___dir",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___base",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___ext",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___name",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___relativeDirectory",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___dev",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___mode",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___nlink",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___uid",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___gid",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___rdev",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___ino",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___atimeMs",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___mtimeMs",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___ctimeMs",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___atime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___mtime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___ctime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___birthtime",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___birthtimeMs",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___blksize",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___blocks",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___publicURL",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childImageSharp___id",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childImageSharp___children",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___id",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___parent___id",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___parent___children",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___children",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___children___id",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___children___children",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___internal___content",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___internal___contentDigest",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___internal___description",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___internal___fieldOwners",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___internal___ignoreType",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___internal___mediaType",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___internal___owner",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___internal___type",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___id",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___excerpt",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___rawMarkdownBody",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___fileAbsolutePath",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___html",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___htmlAst",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___excerptAst",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___headings",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___timeToRead",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___tableOfContents",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___featuredimage___childMarkdownRemark___children",
+                        "description": null,
+                        "isDeprecated": true,
+                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+                    },
+                    {
+                        "name": "frontmatter___tags",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "frontmatter___path",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -21370,12 +21854,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "frontmatter___description",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "frontmatter___intro___blurbs",
                         "description": null,
                         "isDeprecated": false,
@@ -21425,12 +21903,6 @@
                     },
                     {
                         "name": "frontmatter___main___image3___alt",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___path",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -21857,396 +22329,6 @@
                     },
                     {
                         "name": "frontmatter___pricing___plans___price",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___name",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___date",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredpost",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___sourceInstanceName",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___absolutePath",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___relativePath",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___extension",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___size",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___prettySize",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___modifiedTime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___accessTime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___changeTime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___birthTime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___root",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___dir",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___base",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___ext",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___name",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___relativeDirectory",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___dev",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___mode",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___nlink",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___uid",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___gid",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___rdev",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___ino",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___atimeMs",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___mtimeMs",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___ctimeMs",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___atime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___mtime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___ctime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___birthtime",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___birthtimeMs",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___blksize",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___blocks",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___publicURL",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childImageSharp___id",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childImageSharp___children",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___id",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___parent___id",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___parent___children",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___children",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___children___id",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___children___children",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___internal___content",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___internal___contentDigest",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___internal___description",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___internal___fieldOwners",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___internal___ignoreType",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___internal___mediaType",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___internal___owner",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___internal___type",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___id",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___excerpt",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___rawMarkdownBody",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___fileAbsolutePath",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___html",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___htmlAst",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___excerptAst",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___headings",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___timeToRead",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___tableOfContents",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___featuredimage___childMarkdownRemark___children",
-                        "description": null,
-                        "isDeprecated": true,
-                        "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
-                    },
-                    {
-                        "name": "frontmatter___tags",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null

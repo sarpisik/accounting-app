@@ -315,6 +315,54 @@ collections:
                                 ],
                         }
                 - { label: 'Body', name: 'body', widget: 'markdown' }
+          - file: 'packages/web/src/pages/404.md'
+            label: '404'
+            name: '404'
+            fields:
+                - {
+                      label: 'Template Key',
+                      name: 'templateKey',
+                      widget: 'hidden',
+                      default: '404',
+                  }
+                - label: Title
+                  name: title
+                  widget: 'object'
+                  fields:
+                      - { label: 'EN', name: 'en', widget: 'string' }
+                      - { label: 'TR', name: 'tr', widget: 'string' }
+                - label: 'Slug'
+                  name: 'slug'
+                  widget: 'object'
+                  fields:
+                      - {
+                            label: 'EN',
+                            name: 'en',
+                            widget: 'string',
+                            required: true,
+                            pattern:
+                                [
+                                    '^[a-z0-9]+(?:-[a-z0-9]+)*$',
+                                    'A slug can have no spaces or special characters',
+                                ],
+                        }
+                      - {
+                            label: 'TR',
+                            name: 'tr',
+                            widget: 'string',
+                            required: true,
+                            pattern:
+                                [
+                                    '^[a-z0-9]+(?:-[a-z0-9]+)*$',
+                                    'A slug can have no spaces or special characters',
+                                ],
+                        }
+                - label: Body
+                  name: body
+                  widget: object
+                  fields:
+                      - { label: 'EN', name: 'en', widget: 'markdown' }
+                      - { label: 'TR', name: 'tr', widget: 'markdown' }
           - file: 'packages/web/src/pages/products/index.md'
             label: 'Products Page'
             name: 'products'
