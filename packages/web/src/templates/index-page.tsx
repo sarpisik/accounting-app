@@ -132,16 +132,17 @@ IndexPageTemplate.propTypes = {
     }),
 };
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, pageContext }) => {
     console.log(data);
 
+    const { locale } = pageContext;
     const { frontmatter } = data.markdownRemark;
 
     return (
         <Layout>
             <IndexPageTemplate
                 image={frontmatter.image}
-                title={frontmatter.title.en}
+                title={frontmatter.title[locale]}
                 heading={frontmatter.heading}
                 subheading={frontmatter.subheading}
                 mainpitch={frontmatter.mainpitch}
@@ -168,6 +169,7 @@ export const pageQuery = graphql`
             frontmatter {
                 title {
                     en
+                    tr
                 }
                 image {
                     childImageSharp {
