@@ -3,6 +3,9 @@ templateKey: index-page
 title:
   en: Great coffee with a conscience
   tr: Harika Kahve
+slug:
+  en: en
+  tr: tr
 image: /img/home-jumbotron.jpg
 heading: Great coffee with a conscience
 subheading: Support sustainable farming while enjoying a cup
