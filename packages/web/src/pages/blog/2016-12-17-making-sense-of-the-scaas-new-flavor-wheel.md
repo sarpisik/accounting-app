@@ -4,6 +4,9 @@ name: Making sense of the SCAA’s new Flavor Wheel
 title:
   en: Making sense of the SCAA’s new Flavor Wheel
   tr: SCAA’nın yeni Lezzet çarkını anlamlandırmak
+slug:
+  en: making-sense-of-the-scaas-new-flavor-wheel
+  tr: scaa-nin-yeni-lezzet-carkini-anlamlandirmak
 date: 2016-12-17T15:04:10.000Z
 description: The Coffee Taster’s Flavor Wheel, the official resource used by
   coffee tasters, has been revised for the first time this year.
