@@ -1,19 +1,21 @@
 import React, { ReactElement } from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
+import Content from '../components/Content';
 import { NotFoundPageTemplateQuery } from '../types/generated';
 
 interface TemplateProps {
     title: string;
+    content: string;
 }
 
 export function NotFoundPageTemplate(props: TemplateProps): ReactElement {
-    const { title } = props;
+    const { title, content } = props;
 
     return (
         <div>
             <h1>{title}</h1>
-            <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+            <Content content={content} />
         </div>
     );
 }
@@ -24,10 +26,11 @@ interface Props {
 
 export default function NotFoundPage({ data }: Props): ReactElement {
     const title = data.markdownRemark?.frontmatter?.title?.en || '';
+    const content = data.markdownRemark?.frontmatter?.content?.en || '';
 
     return (
         <Layout>
-            <NotFoundPageTemplate title={title} />
+            <NotFoundPageTemplate title={title} content={content} />
         </Layout>
     );
 }
@@ -37,6 +40,9 @@ export const pageQuery = graphql`
         markdownRemark(frontmatter: { templateKey: { eq: "404-page" } }) {
             frontmatter {
                 title {
+                    en
+                }
+                content {
                     en
                 }
             }

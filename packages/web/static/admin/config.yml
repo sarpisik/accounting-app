@@ -357,8 +357,8 @@ collections:
                                     'A slug can have no spaces or special characters',
                                 ],
                         }
-                - label: Body
-                  name: body
+                - label: Content
+                  name: content
                   widget: object
                   fields:
                       - { label: 'EN', name: 'en', widget: 'markdown' }
