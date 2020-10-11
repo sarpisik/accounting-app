@@ -81,7 +81,12 @@ collections:
                       widget: 'hidden',
                       default: 'index-page',
                   }
-                - { label: Title, name: title, widget: string }
+                - label: Title
+                  name: title
+                  widget: 'object'
+                  fields:
+                      - { label: 'EN', name: 'en', widget: 'string' }
+                      - { label: 'TR', name: 'tr', widget: 'string' }
                 - { label: Image, name: image, widget: image }
                 - { label: Heading, name: heading, widget: string }
                 - { label: Subheading, name: subheading, widget: string }
@@ -210,7 +215,12 @@ collections:
                       widget: 'hidden',
                       default: 'about-page',
                   }
-                - { label: 'Title', name: 'title', widget: 'string' }
+                - label: Title
+                  name: title
+                  widget: 'object'
+                  fields:
+                      - { label: 'EN', name: 'en', widget: 'string' }
+                      - { label: 'TR', name: 'tr', widget: 'string' }
                 - { label: 'Body', name: 'body', widget: 'markdown' }
           - file: 'packages/web/src/pages/products/index.md'
             label: 'Products Page'
@@ -222,7 +232,12 @@ collections:
                       widget: 'hidden',
                       default: 'product-page',
                   }
-                - { label: Title, name: title, widget: string }
+                - label: Title
+                  name: title
+                  widget: 'object'
+                  fields:
+                      - { label: 'EN', name: 'en', widget: 'string' }
+                      - { label: 'TR', name: 'tr', widget: 'string' }
                 - { label: Image, name: image, widget: image }
                 - { label: Heading, name: heading, widget: string }
                 - { label: Description, name: description, widget: string }

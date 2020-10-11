@@ -20,7 +20,7 @@ export const IndexPageTemplate = ({
             className="full-width-image margin-top-0"
             style={{
                 backgroundImage: `url(${
-                    !!image.childImageSharp
+                    image.childImageSharp
                         ? image.childImageSharp.fluid.src
                         : image
                 })`,
@@ -134,7 +134,7 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
     console.log(data);
-    
+
     const { frontmatter } = data.markdownRemark;
 
     return (

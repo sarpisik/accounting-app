@@ -29,7 +29,7 @@ export const ProductPageTemplate = ({
             className="full-width-image-container margin-top-0"
             style={{
                 backgroundImage: `url(${
-                    !!image.childImageSharp
+                    image.childImageSharp
                         ? image.childImageSharp.fluid.src
                         : image
                 })`,
@@ -44,7 +44,7 @@ export const ProductPageTemplate = ({
                     padding: '1rem',
                 }}
             >
-                {title.en}
+                {title}
             </h2>
         </div>
         <section className="section section--gradient">
