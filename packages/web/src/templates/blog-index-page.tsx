@@ -4,17 +4,17 @@ import BlogRoll from '../components/BlogRoll';
 import Layout from '../components/Layout';
 import { BlogIndexPageTemplateQuery } from '../types/generated';
 
-interface Props {
-    data: BlogIndexPageTemplateQuery;
+interface TemplateProps {
+    title: string;
 }
 
-export default function BlogIndexPageTemplate({
-    data,
-}: Props): React.ReactElement {
-    const title = data.markdownRemark?.frontmatter?.title?.en;
+export function BlogIndexPageTemplate(
+    props: TemplateProps
+): React.ReactElement {
+    const { title } = props;
 
     return (
-        <Layout>
+        <React.Fragment>
             <div
                 className="full-width-image-container margin-top-0"
                 style={{
@@ -40,6 +40,20 @@ export default function BlogIndexPageTemplate({
                     </div>
                 </div>
             </section>
+        </React.Fragment>
+    );
+}
+
+interface Props {
+    data: BlogIndexPageTemplateQuery;
+}
+
+export default function BlogIndexPage({ data }: Props): React.ReactElement {
+    const title = data.markdownRemark?.frontmatter?.title?.en || '';
+
+    return (
+        <Layout>
+            <BlogIndexPageTemplate title={title} />
         </Layout>
     );
 }
