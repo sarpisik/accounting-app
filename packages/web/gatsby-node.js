@@ -1,7 +1,10 @@
-const _ = require('lodash');
 const path = require('path');
+const _ = require('lodash');
+
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+
+const config = require('./gatsby-config');
 
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions;
@@ -16,7 +19,6 @@ exports.createPages = ({ actions, graphql }) => {
                             slug
                         }
                         frontmatter {
-                            tags
                             templateKey
                         }
                     }
@@ -28,11 +30,11 @@ exports.createPages = ({ actions, graphql }) => {
             result.errors.forEach((e) => console.error(e.toString()));
             return Promise.reject(result.errors);
         }
-
         const posts = result.data.allMarkdownRemark.edges;
 
         posts.forEach((edge) => {
             const id = edge.node.id;
+            // console.log(edge.node.fields.slug);
             createPage({
                 path: edge.node.fields.slug,
                 tags: edge.node.frontmatter.tags,
@@ -47,30 +49,6 @@ exports.createPages = ({ actions, graphql }) => {
                 },
             });
         });
-
-        // Tag pages:
-        let tags = [];
-        // Iterate through each post, putting all found tags into `tags`
-        posts.forEach((edge) => {
-            if (_.get(edge, `node.frontmatter.tags`)) {
-                tags = tags.concat(edge.node.frontmatter.tags);
-            }
-        });
-        // Eliminate duplicate tags
-        tags = _.uniq(tags);
-
-        // Make tag pages
-        tags.forEach((tag) => {
-            const tagPath = `/tags/${_.kebabCase(tag)}/`;
-
-            createPage({
-                path: tagPath,
-                component: path.resolve(`src/templates/tags.tsx`),
-                context: {
-                    tag,
-                },
-            });
-        });
     });
 };
 
@@ -80,12 +58,33 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     if (node.internal.type === `MarkdownRemark`) {
         const value = createFilePath({ node, getNode });
-        console.log(node);
-        console.log(value);
+        // console.log(value);
+        // console.log(node);
         createNodeField({
             name: `slug`,
             node,
             value,
         });
     }
+};
+
+exports.onCreatePage = async ({
+    page,
+    actions: { createPage, deletePage },
+}) => {
+    // console.log(page);
+    // Delete the original page (since we are gonna create localized versions of it)
+    await deletePage(page);
+
+    // Create one page for each locale
+    await Promise.all(
+        config.siteMetadata.locales.map(async (lang) => {
+            const localizedPath = `/${lang}${page.path}`;
+
+            await createPage({
+                ...page,
+                path: localizedPath,
+            });
+        })
+    );
 };
