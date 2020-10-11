@@ -11,14 +11,10 @@ export function NotFoundPageTemplate(props: TemplateProps): ReactElement {
     const { title } = props;
 
     return (
-        <Layout>
-            <div>
-                <h1>{title}</h1>
-                <p>
-                    You just hit a route that doesn&#39;t exist... the sadness.
-                </p>
-            </div>
-        </Layout>
+        <div>
+            <h1>{title}</h1>
+            <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        </div>
     );
 }
 
