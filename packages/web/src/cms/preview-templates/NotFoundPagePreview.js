@@ -9,11 +9,11 @@ const NotFoundPagePreview = ({ entry, widgetFor }) => {
         <React.Fragment>
             <NotFoundPageTemplate
                 title={title.en}
-                content={widgetFor('body')}
+                // content={widgetFor('body')}
             />
             <NotFoundPageTemplate
                 title={title.tr}
-                content={widgetFor('body')}
+                // content={widgetFor('body')}
             />
         </React.Fragment>
     );
