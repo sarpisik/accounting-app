@@ -4,6 +4,9 @@ path: /about
 title:
   en: About our values
   tr: Değerlerimiz Hakkında
+slug:
+  en: about
+  tr: hakkimizda
 ---
 
 ### Shade-grown coffee
