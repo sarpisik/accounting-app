@@ -35,6 +35,9 @@ module.exports = {
                 name: 'images',
             },
         },
+        'gatsby-plugin-mui-layout',
+        'gatsby-plugin-dark-mode',
+        'gatsby-plugin-material-ui',
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         {
