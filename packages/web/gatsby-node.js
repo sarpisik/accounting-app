@@ -4,7 +4,7 @@ const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
-// const config = require('./gatsby-config');
+const config = require('./gatsby-config');
 
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions;
@@ -82,23 +82,25 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 };
 
-// exports.onCreatePage = async ({
-//     page,
-//     actions: { createPage, deletePage },
-// }) => {
-//     // console.log(page);
-//     // Delete the original page (since we are gonna create localized versions of it)
-//     await deletePage(page);
+exports.onCreatePage = async ({
+    page,
+    actions: { createPage, deletePage },
+}) => {
+    const notIndexPage = page.path !== '/';
+    if (notIndexPage) {
+        // Delete the original pages which auto created and other than above
+        await deletePage(page);
 
-//     // Create one page for each locale
-//     await Promise.all(
-//         config.siteMetadata.locales.map(async (lang) => {
-//             const localizedPath = `/${lang}${page.path}`;
+        // Create one page for each locale
+        await Promise.all(
+            config.siteMetadata.locales.map((lang) => {
+                const localizedPath = `/${lang}${page.path}`;
 
-//             await createPage({
-//                 ...page,
-//                 path: localizedPath,
-//             });
-//         })
-//     );
-// };
+                return createPage({
+                    ...page,
+                    path: localizedPath,
+                });
+            })
+        );
+    }
+};
