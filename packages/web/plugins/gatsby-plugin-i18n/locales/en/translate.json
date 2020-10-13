@@ -1,0 +1,16 @@
+{
+    "translations": {
+        "app": {
+            "links": {
+                "accounts": "accounts",
+                "inventory": "inventory",
+                "invoices": "invoices",
+                "signIn": "sign in",
+                "signOut": "sign out",
+                "signUp": "sign up",
+                "transactions": "transactions",
+                "users": "users"
+            }
+        }
+    }
+}

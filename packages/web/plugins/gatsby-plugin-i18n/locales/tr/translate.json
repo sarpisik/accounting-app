@@ -1,0 +1,16 @@
+{
+    "translations": {
+        "app": {
+            "links": {
+                "accounts": "cariler",
+                "inventory": "envanter",
+                "invoices": "faturalar",
+                "signIn": "oturum aç",
+                "signOut": "oturum kapat",
+                "signUp": "üye ol",
+                "transactions": "hareketler",
+                "users": "kullanıcılar"
+            }
+        }
+    }
+}

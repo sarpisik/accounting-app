@@ -74,11 +74,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         const value = createFilePath({ node, getNode });
         // console.log(value);
         // console.log(node);
-        createNodeField({
-            name: `slug`,
-            node,
-            value,
-        });
+        createNodeField({ name: `slug`, node, value });
     }
 };
 
@@ -93,11 +89,12 @@ exports.onCreatePage = async ({
 
         // Create one page for each locale
         await Promise.all(
-            config.siteMetadata.locales.map((lang) => {
-                const localizedPath = `/${lang}${page.path}`;
+            config.siteMetadata.locales.map((locale) => {
+                const localizedPath = `/${locale}${page.path}`;
 
                 return createPage({
                     ...page,
+                    context: { ...page.context, locale },
                     path: localizedPath,
                 });
             })

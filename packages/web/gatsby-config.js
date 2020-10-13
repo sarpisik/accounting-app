@@ -37,6 +37,7 @@ module.exports = {
         },
         'gatsby-plugin-mui-layout',
         'gatsby-plugin-dark-mode',
+        'gatsby-plugin-i18n',
         'gatsby-plugin-redux',
         'gatsby-plugin-material-ui',
         'gatsby-plugin-sharp',
