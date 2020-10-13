@@ -1,7 +1,7 @@
-import React from "react"
-import { DarkModeProvider } from "./DarkModeProvider"
-import { MODE } from "./constants"
+import React from 'react';
+import { DarkModeProvider } from './DarkModeProvider';
+import { ENVIRONMENT } from './constants';
 
-export const wrapRootElement = ({ element }) => {
-  return <DarkModeProvider mode={MODE["server"]}>{element}</DarkModeProvider>
-}
+export const wrapRootElement = ({ element }) => (
+    <DarkModeProvider mode={ENVIRONMENT['server']}>{element}</DarkModeProvider>
+);

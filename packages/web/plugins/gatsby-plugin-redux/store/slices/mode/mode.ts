@@ -4,7 +4,7 @@ import { RootState, Thunk } from '../../store';
 
 export const MODE_MAP = { light: 'dark', dark: 'light' } as const;
 
-type Modes = keyof typeof MODE_MAP;
+export type Modes = keyof typeof MODE_MAP;
 
 interface Mode {
     mode: Modes;
