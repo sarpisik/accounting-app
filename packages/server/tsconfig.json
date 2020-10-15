@@ -17,7 +17,7 @@
             "@app": ["src/app"],
             "@connection/*": ["src/connection/*"],
             "@entities/*": ["src/entities/*"],
-            "@routes/*": ["src/routes/*"],
+            "@routes": ["src/routes"],
             "@shared/*": ["src/shared/*"],
             "@server": ["src/Server"],
             "@shared-types/*": ["../shared-types/lib/*"]
