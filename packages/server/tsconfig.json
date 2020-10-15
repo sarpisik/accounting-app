@@ -14,7 +14,7 @@
         "target": "es6",
         "moduleResolution": "node",
         "paths": {
-            "@daos/*": ["src/daos/*"],
+            "@app": ["src/app"],
             "@connection/*": ["src/connection/*"],
             "@entities/*": ["src/entities/*"],
             "@routes/*": ["src/routes/*"],
