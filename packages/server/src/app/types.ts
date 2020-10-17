@@ -1,6 +1,11 @@
-import express from 'express';
 import { routes } from '@routes';
-import { MongoCallback, MongoClient } from 'mongodb';
+import { ErrorTypes } from '@shared-types/entities/shared';
+import { CustomError } from '@shared/errors';
+import { errorPayload } from '@shared/functions';
+import logger from '@shared/Logger';
+import express from 'express';
+import { StatusCodes } from 'http-status-codes';
+import { MongoClient } from 'mongodb';
 
 interface AppConfig {
     dbUrl: string;
@@ -11,8 +16,8 @@ export type DB = ReturnType<MongoClient['db']>;
 export abstract class AppBase {
     app = express();
     middlewares = [express.json(), express.urlencoded({ extended: true })];
-    private _client: MongoClient;
-    private _db!: DB;
+    protected _client: MongoClient;
+    protected _db!: DB;
 
     constructor(config: AppConfig) {
         this._client = new MongoClient(config.dbUrl, {
@@ -22,27 +27,49 @@ export abstract class AppBase {
     }
 
     // Database methods
-    async connectDB() {
+    async connectDB(dbName?: string) {
         await this._client.connect();
-        this._db = this._client.db();
-    }
-    disconnectDB(cb: MongoCallback<void>) {
-        this._client.close(cb);
-    }
-    dropDB(cb: MongoCallback<any>) {
-        this._db.dropDatabase(cb);
+        this._db = this._client.db(dbName);
     }
 
     // App methods
     async init() {
         await this.connectDB();
-
-        // Register middlewares
-        this.middlewares.forEach((mid) => this.app.use(mid));
-
-        // Register routes
-        this.app.use('/', routes(this._db));
-
+        this.setMiddlewares();
+        this.setRoutes();
+        this.setErrorHandler();
         return this.app;
+    }
+
+    setMiddlewares() {
+        this.middlewares.forEach((mid) => this.app.use(mid));
+    }
+
+    setRoutes() {
+        this.app.use('/', routes(this._db));
+    }
+
+    setErrorHandler() {
+        this.app.use(
+            (
+                err: CustomError,
+                _req: express.Request,
+                res: express.Response,
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                _next: express.NextFunction
+            ) => {
+                // Print API errors
+                logger.error(err.message, err);
+
+                return res
+                    .status(err.statusCode || StatusCodes.BAD_REQUEST)
+                    .json(
+                        errorPayload(
+                            err.type || ErrorTypes.BAD_REQUEST,
+                            err.message
+                        )
+                    );
+            }
+        );
     }
 }

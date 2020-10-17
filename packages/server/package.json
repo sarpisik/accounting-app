@@ -6,7 +6,8 @@
         "lint": "tslint --project \"tsconfig.json\"",
         "start": "node -r module-alias/register ./dist --env=production",
         "dev": "nodemon",
-        "test": "nodemon --config ./spec/nodemon.json"
+        "test": "nyc --reporter=html ts-node -r tsconfig-paths/register ./spec",
+        "test:dev": "nodemon --config ./spec/nodemon.json"
     },
     "nodemonConfig": {
         "watch": [
@@ -42,6 +43,7 @@
         "winston": "^3.3.3"
     },
     "devDependencies": {
+        "@istanbuljs/nyc-config-typescript": "1.0.1",
         "@types/bcrypt": "3.0.0",
         "@types/command-line-args": "^5.0.0",
         "@types/cookie-parser": "^1.4.2",
@@ -57,7 +59,9 @@
         "find": "^0.3.0",
         "fs-extra": "^9.0.1",
         "jasmine": "^3.6.1",
+        "mongodb-memory-server": "6.9.2",
         "nodemon": "^2.0.4",
+        "nyc": "15.1.0",
         "supertest": "^5.0.0",
         "ts-node": "^9.0.0",
         "tsconfig-paths": "^3.9.0"

@@ -12,7 +12,7 @@ export abstract class V1 extends Api {
     }
 }
 
-export abstract class UserPath extends V1 {
+export class UserPath extends V1 {
     constructor() {
         super('/users');
     }

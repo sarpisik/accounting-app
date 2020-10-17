@@ -1,7 +1,4 @@
-import logger from '@shared/Logger';
-import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import { StatusCodes } from 'http-status-codes';
 import morgan from 'morgan';
 import { AppBase } from './types';
 
@@ -20,16 +17,6 @@ export default class App extends AppBase {
 
     async init() {
         const app = await super.init();
-
-        // Print API errors
-        app.use(
-            (err: Error, req: Request, res: Response, next: NextFunction) => {
-                logger.error(err.message, err);
-                return res.status(StatusCodes.BAD_REQUEST).json({
-                    error: err.message,
-                });
-            }
-        );
 
         return app;
     }

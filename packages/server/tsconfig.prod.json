@@ -3,5 +3,9 @@
     "compilerOptions": {
         "sourceMap": false
     },
-    "exclude": ["spec", "src/**/__test__/", "src/**/*.mock.ts", "src/public/"]
+    "exclude": ["spec", "src/**/__test__/", "src/**/*.mock.ts", "src/public/"],
+    "typedocOptions": {
+        "mode": "modules",
+        "out": "doc"
+    }
 }

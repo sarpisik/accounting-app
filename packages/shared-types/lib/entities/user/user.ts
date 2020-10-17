@@ -17,3 +17,18 @@ export interface PostUser {
     reqBody: Pick<IUser, 'name' | 'email' | 'password'>;
     resBody: ResBody<Pick<IUser, 'email'>>;
 }
+export interface GetUser {
+    reqParams: { param: string };
+    reqQuery: { by: 'id' | 'email' };
+    resBody: ResBody<Omit<IUserDocument, 'password'>>;
+}
+export interface DeleteUser {
+    reqParams: { id: string };
+    resBody: ResBody<null>;
+}
+export interface PutUser {
+    reqBody: Omit<IUserDocument, 'created_at' | 'updated_at'>;
+    reqParams: { param: string };
+    reqQuery: { by: 'id' | 'email' };
+    resBody: ResBody<Omit<IUserDocument, 'password'>>;
+}

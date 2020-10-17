@@ -19,6 +19,7 @@
             "@entities/*": ["src/entities/*"],
             "@routes": ["src/routes"],
             "@shared/*": ["src/shared/*"],
+            "@spec/*": ["spec/*"],
             "@server": ["src/Server"],
             "@shared-types/*": ["../shared-types/lib/*"]
         },
