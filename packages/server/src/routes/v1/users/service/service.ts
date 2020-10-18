@@ -8,7 +8,9 @@ import { ServiceBase } from '../../types';
 import { IUserDocument } from './types';
 import { convertAccountId, createDefaults, createInitUser } from './utils';
 
-export default class UserService extends ServiceBase<IUserDocument> {
+export type LocalUser = Omit<IUserDocument, 'password'>;
+
+export class UserService extends ServiceBase<IUserDocument> {
     constructor(db: DB) {
         super(db, 'users');
     }
@@ -41,15 +43,29 @@ export default class UserService extends ServiceBase<IUserDocument> {
         return super._find({});
     }
 
+    /**
+     * Finds the user by id.
+     *
+     * @param {string} id
+     * @returns user object without password field.
+     * @memberof UserService
+     */
     getUserById(id: string) {
-        return this._getUser({ _id: super.convertMongoId(id) });
+        return this._getUser(super.safeFilter('_id', super.convertMongoId(id)));
     }
 
-    getUserByEmail(email: IUserDocument['email']) {
-        return this._getUser({ email });
+    /**
+     * Finds the user by email.
+     *
+     * @param {string} email
+     * @returns user object without password field.
+     * @memberof UserService
+     */
+    getUserByEmail(email: string) {
+        return this._getUser(super.safeFilter('email', email));
     }
 
-    async addUser(promise: Promise<PostUser['reqBody']>) {
+    async addUser(promise: Promise<PostUser['req']['body']>) {
         const body = await promise;
 
         return super._insertOne(
@@ -62,7 +78,7 @@ export default class UserService extends ServiceBase<IUserDocument> {
         user: U
     ) {
         return this._updateUser(
-            { _id: super.convertMongoId(id) },
+            super.safeFilter('_id', super.convertMongoId(id)),
             { $set: convertAccountId.call(this, user) }
         );
     }
@@ -71,15 +87,14 @@ export default class UserService extends ServiceBase<IUserDocument> {
         email: string,
         user: U
     ) {
-        return this._updateUser(
-            { email },
-            { $set: convertAccountId.call(this, user) }
-        );
+        return this._updateUser(super.safeFilter('email', email), {
+            $set: convertAccountId.call(this, user),
+        });
     }
 
     deleteUserById(id: string) {
         return super
-            ._deleteOne({ _id: { $in: [super.convertMongoId(id)] } })
+            ._deleteOne(super.safeFilter('_id', super.convertMongoId(id)))
             .then(({ ok }) => ok);
     }
 }

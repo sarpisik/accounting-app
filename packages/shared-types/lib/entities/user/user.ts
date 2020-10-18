@@ -1,3 +1,4 @@
+import { ReqType } from 'src/routes/v1/shared';
 import { Base, ResBody } from '../shared';
 
 export interface IUserDocument extends IUser {
@@ -13,22 +14,35 @@ export interface IUser extends Base {
     isValidated: Date | true; // Default Date to TTL.
 }
 
+interface PostUserReq extends ReqType {
+    body: Pick<IUser, 'name' | 'email' | 'password'>;
+}
 export interface PostUser {
-    reqBody: Pick<IUser, 'name' | 'email' | 'password'>;
+    req: PostUserReq;
     resBody: ResBody<Pick<IUser, 'email'>>;
 }
+
+interface GetUserReq extends ReqType {
+    params: { param: string };
+    query: { by: 'id' | 'email' };
+}
 export interface GetUser {
-    reqParams: { param: string };
-    reqQuery: { by: 'id' | 'email' };
+    req: GetUserReq;
     resBody: ResBody<Omit<IUserDocument, 'password'>>;
 }
+
+interface DeleteUserReq extends ReqType {
+    params: { id: string };
+}
 export interface DeleteUser {
-    reqParams: { id: string };
+    req: DeleteUserReq;
     resBody: ResBody<null>;
 }
+
+interface PutUserReq extends GetUserReq {
+    body: Omit<IUserDocument, 'created_at' | 'updated_at'>;
+}
 export interface PutUser {
-    reqBody: Omit<IUserDocument, 'created_at' | 'updated_at'>;
-    reqParams: { param: string };
-    reqQuery: { by: 'id' | 'email' };
+    req: PutUserReq;
     resBody: ResBody<Omit<IUserDocument, 'password'>>;
 }

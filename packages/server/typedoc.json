@@ -1,0 +1,6 @@
+{
+    "inputFiles": ["./src"],
+    "mode": "modules",
+    "out": "doc",
+    "exclude": ["spec", "src/**/__test__/", "src/**/*.mock.ts", "src/public/"]
+}

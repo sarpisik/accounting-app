@@ -1,11 +1,19 @@
-import { RequestHandler } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
-export default function withCatchError<
-    P = any,
-    ResBody = any,
-    ReqBody = any,
-    ReqQuery = any
->(wrappedController: RequestHandler<P, ResBody, ReqBody, ReqQuery>) {
+export type ReqType = Request;
+export type ResType<Body> = Response<Body>;
+
+export function withCatchError<
+    Req extends ReqType,
+    ResBody = unknown,
+    Res extends ResType<ResBody> = ResType<ResBody>
+>(
+    wrappedController: (
+        req: Req,
+        res: Res,
+        next: NextFunction
+    ) => Promise<unknown>
+) {
     return function wrapperController(
         ...params: Parameters<typeof wrappedController>
     ) {

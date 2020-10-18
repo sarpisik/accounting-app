@@ -35,7 +35,7 @@ describe('Users Router', () => {
         callApiPut = (subPath: string, body: Record<string, unknown>) =>
             api.put(concatPaths(subPath), body),
         callApiDelete = (subPath: string) => api.delete(concatPaths(subPath)),
-        createUserMock: () => PostUser['reqBody'] = () => ({
+        createUserMock: () => PostUser['req']['body'] = () => ({
             email: 'test@example.com',
             name: 'Test User',
             password: '123456',
@@ -186,13 +186,15 @@ describe('Users Router', () => {
                     docNotFound('User', query, email)
                 );
 
-            callApiPut(`/${email}?by=${query}`, {}).end((err, res) => {
-                pErr(err);
-                expect(res.status).toBe(BAD_REQUEST);
-                expect(res.body.status).toBe(response.status);
-                expect(res.body.payload).toEqual(response.payload);
-                done();
-            });
+            callApiPut(`/email-confirmation/${email}?by=${query}`, {}).end(
+                (err, res) => {
+                    pErr(err);
+                    expect(res.status).toBe(BAD_REQUEST);
+                    expect(res.body.status).toBe(response.status);
+                    expect(res.body.payload).toEqual(response.payload);
+                    done();
+                }
+            );
         });
 
         it(`it should response a JSON object within updated user by email query and a status code of "${OK}" if the request was successful.`, (done) => {
@@ -202,7 +204,7 @@ describe('Users Router', () => {
                 pErr(err);
 
                 callApiPut(
-                    `/${payload.email}?by=${query}`,
+                    `/email-confirmation/${payload.email}?by=${query}`,
                     Object.assign({}, payload, { isValidated: true })
                 ).end((err, res) => {
                     const {
@@ -225,7 +227,7 @@ describe('Users Router', () => {
                 pErr(err);
 
                 callApiPut(
-                    `/${payload._id}?by=${query}`,
+                    `/email-confirmation/${payload._id}?by=${query}`,
                     Object.assign({}, payload, { isValidated: true })
                 ).end((err, res) => {
                     const {
@@ -257,7 +259,7 @@ describe('Users Router', () => {
                 pErr(err);
 
                 callApiPut(
-                    `/${payload._id}?by=${query}`,
+                    `/email-confirmation/${payload._id}?by=${query}`,
                     Object.assign({}, payload, { isValidated: true })
                 ).end((err, res) => {
                     pErr(err);

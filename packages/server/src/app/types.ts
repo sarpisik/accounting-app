@@ -1,21 +1,27 @@
 import { routes } from '@routes';
 import { ErrorTypes } from '@shared-types/entities/shared';
 import { CustomError } from '@shared/errors';
-import { errorPayload } from '@shared/functions';
+import { errorPayload, getEnv } from '@shared/functions';
 import logger from '@shared/Logger';
 import express from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { MongoClient } from 'mongodb';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
 
 interface AppConfig {
     dbUrl: string;
 }
 
+const isProduction = getEnv('NODE_ENV') === 'production';
+const Store = MongoStore(session);
+
 export type DB = ReturnType<MongoClient['db']>;
 
 export abstract class AppBase {
     app = express();
-    middlewares = [express.json(), express.urlencoded({ extended: true })];
+    middlewares: express.RequestHandler[];
+
     protected _client: MongoClient;
     protected _db!: DB;
 
@@ -24,6 +30,24 @@ export abstract class AppBase {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
+        this.middlewares = [
+            express.json(),
+            express.urlencoded({ extended: true }),
+            session({
+                secret: getEnv('SESSION_SECRET'),
+                resave: true,
+                saveUninitialized: false,
+                cookie: {
+                    maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days.
+                    httpOnly: true,
+                    path: getEnv('COOKIE_PATH'),
+                    sameSite: 'none', // Allow cross origin sent.
+                    domain: getEnv('HOST'),
+                    secure: isProduction,
+                },
+                store: new Store({ client: this._client }),
+            }),
+        ];
     }
 
     // Database methods

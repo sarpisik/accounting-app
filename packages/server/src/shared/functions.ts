@@ -1,5 +1,6 @@
 import { ErrorTypes, ResBody } from '@shared-types/entities/shared';
 import logger from './Logger';
+import assert from 'assert';
 
 export const pErr = (err: Error) => {
     err && logger.error(err);
@@ -18,4 +19,10 @@ export function errorPayload<T extends ErrorTypes, P>(
     payload: P
 ): ResBody<P>['error'] {
     return { status: 'ERROR', type, payload };
+}
+export function getEnv(name: string): string {
+    const env = process.env[name];
+    assert(env, `ENV variable ${name} must be defined`);
+
+    return env as string;
 }

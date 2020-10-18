@@ -7,7 +7,8 @@
         "start": "node -r module-alias/register ./dist --env=production",
         "dev": "nodemon",
         "test": "nyc --reporter=html ts-node -r tsconfig-paths/register ./spec",
-        "test:dev": "nodemon --config ./spec/nodemon.json"
+        "test:dev": "nodemon --config ./spec/nodemon.json",
+        "doc": "typedoc --options typedoc.json"
     },
     "nodemonConfig": {
         "watch": [
@@ -29,10 +30,12 @@
     "dependencies": {
         "bcrypt": "5.0.0",
         "command-line-args": "^5.1.1",
+        "connect-mongo": "3.2.0",
         "cookie-parser": "^1.4.5",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "express-async-errors": "^3.1.1",
+        "express-session": "1.17.1",
         "helmet": "^4.1.1",
         "http-status-codes": "^2.1.4",
         "jsonfile": "^6.0.1",
@@ -48,6 +51,7 @@
         "@types/command-line-args": "^5.0.0",
         "@types/cookie-parser": "^1.4.2",
         "@types/express": "^4.17.8",
+        "@types/express-session": "1.17.0",
         "@types/find": "^0.2.1",
         "@types/helmet": "0.0.48",
         "@types/jasmine": "^3.5.14",
@@ -64,6 +68,7 @@
         "nyc": "15.1.0",
         "supertest": "^5.0.0",
         "ts-node": "^9.0.0",
-        "tsconfig-paths": "^3.9.0"
+        "tsconfig-paths": "^3.9.0",
+        "typedoc": "0.19.2"
     }
 }

@@ -1,1 +1,1 @@
-export { default as withCatchError } from './withCatchError';
+export * from './withCatchError';

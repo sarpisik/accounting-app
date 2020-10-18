@@ -22,6 +22,16 @@ export class DocNotFoundError<Q, D> extends CustomError {
     }
 }
 
+export class UnAuthorizedError extends CustomError {
+    constructor() {
+        super(
+            StatusCodes.UNAUTHORIZED,
+            ErrorTypes.UNAUTHORIZED,
+            'Un authorized user.'
+        );
+    }
+}
+
 export class MutateFailedError<Q, D> extends CustomError {
     constructor(doc: string, query: Q, data: D) {
         super(

@@ -66,4 +66,8 @@ export abstract class ServiceBase<Document> {
     convertMongoId(id: string) {
         return new ObjectId(id);
     }
+
+    safeFilter<V>(key: keyof Document, value: V) {
+        return { [key]: { $in: [value] } };
+    }
 }
