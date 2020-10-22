@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 
 export type ReqType = Request;
 export type ResType<Body> = Response<Body>;
+export type NextFunctionType = NextFunction;
 
 export function withCatchError<
     Req extends ReqType,
@@ -11,7 +12,7 @@ export function withCatchError<
     wrappedController: (
         req: Req,
         res: Res,
-        next: NextFunction
+        next: NextFunctionType
     ) => Promise<unknown>
 ) {
     return function wrapperController(

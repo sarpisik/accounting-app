@@ -16,9 +16,9 @@ import {
 } from '@shared/functions';
 import { createApp, Request, _App } from '@spec/helpers';
 import { StatusCodes } from 'http-status-codes';
+import { UserService } from 'src/routes/v1/shared/services';
+import { UserDefaults } from 'src/routes/v1/shared/services/users/utils';
 import supertest from 'supertest';
-import { UserService } from '../../service';
-import { UserDefaults } from '../../service/utils/createDefaults/createDefaults';
 
 describe('Users Router', () => {
     let Server: _App, api: Request;
@@ -28,6 +28,11 @@ describe('Users Router', () => {
         { BAD_REQUEST, CREATED, OK } = StatusCodes,
         // helpers
         concatPaths = (subPath: string) => basePath.concat(subPath),
+        createUserMock: () => PostUser['req']['body'] = () => ({
+            email: 'test@example.com',
+            name: 'Test User',
+            password: '123456',
+        }),
         // Api requests
         callApiPost = (body: Record<string, unknown>) =>
             api.post(basePath, body),
@@ -35,11 +40,6 @@ describe('Users Router', () => {
         callApiPut = (subPath: string, body: Record<string, unknown>) =>
             api.put(concatPaths(subPath), body),
         callApiDelete = (subPath: string) => api.delete(concatPaths(subPath)),
-        createUserMock: () => PostUser['req']['body'] = () => ({
-            email: 'test@example.com',
-            name: 'Test User',
-            password: '123456',
-        }),
         postUser = <B>(cb: (body: SuccessPayload<B>) => void) => {
             const body = createUserMock(),
                 response = successPayload({ email: body.email });

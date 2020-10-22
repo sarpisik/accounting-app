@@ -1,13 +1,13 @@
 import { routes } from '@routes';
 import { ErrorTypes } from '@shared-types/entities/shared';
-import { CustomError } from '@shared/errors';
+import { CustomError, ValidationError } from '@shared/errors';
 import { errorPayload, getEnv } from '@shared/functions';
 import logger from '@shared/Logger';
+import MongoStore from 'connect-mongo';
 import express from 'express';
+import session from 'express-session';
 import { StatusCodes } from 'http-status-codes';
 import { MongoClient } from 'mongodb';
-import session from 'express-session';
-import MongoStore from 'connect-mongo';
 
 interface AppConfig {
     dbUrl: string;
@@ -76,7 +76,7 @@ export abstract class AppBase {
     setErrorHandler() {
         this.app.use(
             (
-                err: CustomError,
+                err: CustomError | ValidationError,
                 _req: express.Request,
                 res: express.Response,
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -90,7 +90,9 @@ export abstract class AppBase {
                     .json(
                         errorPayload(
                             err.type || ErrorTypes.BAD_REQUEST,
-                            err.message
+                            err instanceof ValidationError
+                                ? err.validations
+                                : err.message
                         )
                     );
             }

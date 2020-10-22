@@ -4,7 +4,7 @@ import {
     PostUser,
 } from '@shared-types/entities';
 import { FindOneOptions } from 'mongodb';
-import { ServiceBase } from '../../types';
+import { ServiceBase } from 'src/routes/v1/types';
 import { IUserDocument } from './types';
 import { convertAccountId, createDefaults, createInitUser } from './utils';
 
@@ -35,12 +35,19 @@ export class UserService extends ServiceBase<IUserDocument> {
         return super._updateOne(
             query,
             update,
-            Object.assign(options, { projection: { password: 0 } })
+            Object.assign(options, {
+                projection: { password: 0 },
+                returnOriginal: false,
+            })
         );
     }
 
     getUsers() {
         return super._find({});
+    }
+
+    getUserWithPassword(query: Parameters<UserService['_findOne']>[0]) {
+        return super._findOne<IUserDocument>(query);
     }
 
     /**
@@ -83,11 +90,13 @@ export class UserService extends ServiceBase<IUserDocument> {
         );
     }
 
-    updateUserByEmail<U extends Partial<Omit<IUserDocumentClient, '_id'>>>(
+    updateUserByEmail<U extends Partial<Omit<IUserDocument, '_id'>>>(
         email: string,
         user: U
     ) {
         return this._updateUser(super.safeFilter('email', email), {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             $set: convertAccountId.call(this, user),
         });
     }

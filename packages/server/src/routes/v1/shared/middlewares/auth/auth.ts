@@ -1,5 +1,5 @@
 import { UnAuthorizedError } from '@shared/errors';
-import { LocalUser, UserService } from 'src/routes/v1/users/service';
+import { LocalUser, UserService } from '../../services';
 import { ReqType, ResType, withCatchError } from '../withCatchError';
 
 export interface ReqAuth extends ReqType {

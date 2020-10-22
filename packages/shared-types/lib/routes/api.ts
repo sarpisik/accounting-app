@@ -17,3 +17,9 @@ export class UserPath extends V1 {
         super('/users');
     }
 }
+
+export class SessionPath extends V1 {
+    constructor() {
+        super('/session');
+    }
+}

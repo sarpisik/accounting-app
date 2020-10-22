@@ -1,4 +1,4 @@
-import { ReqType } from 'src/routes/v1/shared';
+import { ReqType } from '../../../../server/src/routes/v1/shared';
 import { Base, ResBody } from '../shared';
 
 export interface IUserDocument extends IUser {
@@ -12,6 +12,7 @@ export interface IUser extends Base {
     authorize: 'READ' | 'READ_WRITE' | 'ADMIN' | 'MASTER';
     account: string | null;
     isValidated: Date | true; // Default Date to TTL.
+    last_login: Date;
 }
 
 interface PostUserReq extends ReqType {

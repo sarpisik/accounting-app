@@ -1,5 +1,5 @@
 import { IUserDocument as IUserDocumentClient } from '@shared-types/entities';
-import UserService from '../../service';
+import { UserService } from '../../users';
 import { IUserDocument } from '../../types';
 
 export default function convertAccountId(

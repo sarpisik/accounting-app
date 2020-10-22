@@ -9,8 +9,8 @@ import { successPayload } from '@shared/functions';
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { auth, authenticated, ResType, withCatchError } from '../../shared';
-import { LocalUser, UserService } from '../service';
-import { IUserDocument } from '../service/types';
+import { LocalUser, UserService } from '../../shared/services';
+import { IUserDocument } from '../../shared/services/users/types';
 import { withHashPassword } from './utils';
 
 interface _GetUserResWithLocals<ResBody> extends ResType<ResBody> {
@@ -95,6 +95,8 @@ export default class UsersController extends UserPath {
             param = req.params.param,
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             { _id, ..._user } = req.body,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             user = await this._service[
                 query === 'email' ? 'updateUserByEmail' : 'updateUserById'
             ](param, _user);
