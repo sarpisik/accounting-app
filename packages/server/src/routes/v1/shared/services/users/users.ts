@@ -5,7 +5,7 @@ import {
 } from '@shared-types/entities';
 import { FindOneOptions } from 'mongodb';
 import { ServiceBase } from 'src/routes/v1/types';
-import { IUserDocument } from './types';
+import { IUserDocument, IUserWithAccount } from './types';
 import { convertAccountId, createDefaults, createInitUser } from './utils';
 
 export type LocalUser = Omit<IUserDocument, 'password'>;
@@ -48,6 +48,34 @@ export class UserService extends ServiceBase<IUserDocument> {
 
     getUserWithPassword(query: Parameters<UserService['_findOne']>[0]) {
         return super._findOne<IUserDocument>(query);
+    }
+
+    /**
+     * Finds the user and populate its account document. If the account not
+     * found, it returns undefined even though the user exists.
+     *
+     * @param {object} query
+     * @returns user object with account object or undefined.
+     * @memberof UserService
+     */
+    getUserWithAccount(
+        $match: Parameters<UserService['_findOne']>[0]
+    ): Promise<IUserWithAccount | undefined> {
+        return this._collection
+            .aggregate<IUserWithAccount>([
+                { $match },
+                {
+                    $lookup: {
+                        from: 'accounts',
+                        localField: 'account',
+                        foreignField: '_id',
+                        as: 'account',
+                    },
+                },
+                { $unwind: { path: '$account' } },
+            ])
+            .toArray()
+            .then(([doc]) => doc);
     }
 
     /**

@@ -41,7 +41,6 @@ describe('SESSION ROUTER', () => {
             name: 'Test User',
             password: '123456',
         }),
-        concatPaths = (subPath: string) => basePath.concat(subPath),
         // Api requests
         callApiPost = (
             path: string,
@@ -278,10 +277,8 @@ describe('SESSION ROUTER', () => {
             postSignIn(user, (res) => {
                 expect(res.status).toBe(BAD_REQUEST);
                 expect(res.body.status).toBe(STATUS.ERROR);
-                expect(res.body.type).toBe(ErrorTypes.NOT_FOUND);
-                expect(res.body.payload).toBe(
-                    docNotFound('User', 'email', user.email)
-                );
+                expect(res.body.type).toBe(ErrorTypes.EMAIL_NOT_CONFIRMED);
+                expect(res.body.payload).toBe(emailNotConfirmed(user.email));
                 done();
             });
         });
@@ -360,6 +357,11 @@ describe('SESSION ROUTER', () => {
                 expect(res.status).toBe(OK);
                 expect(res.body.status).toBe(STATUS.SUCCESS);
                 expect(res.body.payload.account).toBeTruthy();
+                expect(res.body.payload.account.tax_no).toBe('');
+                expect(res.body.payload.account.company_name).toBe('');
+                expect(res.body.payload.account.balance).toEqual({
+                    $numberDecimal: '0.00',
+                });
                 expect(res.body.payload.email).toBe(user.email);
                 expect(res.body.payload.name).toBe(user.name);
                 done();

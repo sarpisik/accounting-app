@@ -56,7 +56,6 @@ export default class SessionController extends SessionPath {
             this.signInValidator.fields,
             this.signInValidator.validate,
             this.checkUserByEmail,
-            this.checkEmailConfirmed,
             this.checkUserPass,
             this.signIn,
             this.setSession
@@ -86,27 +85,16 @@ export default class SessionController extends SessionPath {
         SignInLocals<PostSignIn['resBody']['success']>
     >(async (req, res, next) => {
         const { email } = req.body,
-            user = await this._userService.getUserWithPassword(
-                this._userService.safeFilter('email', email)
+            user = await this._userService.getUserWithAccount(
+                Object.assign(
+                    this._userService.safeFilter('email', email),
+                    this._userService.safeFilter('isValidated', true)
+                )
             );
 
-        if (!user) throw new DocNotFoundError('User', 'email', email);
+        if (!user) throw new EmailNotConfirmedError(email);
 
         res.locals.user = user;
-        next();
-    });
-
-    checkEmailConfirmed = withCatchError<
-        PostSignIn['req'],
-        PostSignIn['resBody']['success'],
-        SignInLocals<PostSignIn['resBody']['success']>
-    >(async (_req, res, next) => {
-        const { email, isValidated } = res.locals.user,
-            emailNotConfirmed =
-                typeof isValidated !== 'boolean' || !isValidated;
-
-        if (emailNotConfirmed) throw new EmailNotConfirmedError(email);
-
         next();
     });
 
