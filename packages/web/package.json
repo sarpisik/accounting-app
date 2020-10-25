@@ -52,16 +52,18 @@
     "license": "MIT",
     "main": "n/a",
     "scripts": {
-        "clean": "gatsby clean",
-        "serve": "gatsby serve",
-        "start": "npm run develop",
         "build": "npm run clean && gatsby build",
+        "clean": "gatsby clean",
         "dev": "npm run clean && gatsby develop",
         "format": "prettier --write \"{gatsby-*.js,src/**/*.js,src/**/*.ts,src/**/*.tsx}\"",
-        "type-check": "../../node_modules/.bin/tsc --project ./tsconfig.json",
         "ggl-types": "graphql-codegen --config codegen.yml",
         "lint": "eslint 'src/**/*.{js,ts,tsx}' 'plugins/**/*.{js,ts,tsx}' --quiet --fix",
-        "test": "jest"
+        "serve": "gatsby serve",
+        "start": "npm run develop",
+        "test": "jest",
+        "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
+        "test:watch": "jest --watch",
+        "type-check": "../../node_modules/.bin/tsc --project ./tsconfig.json"
     },
     "devDependencies": {
         "@graphql-codegen/cli": "^1.17.10",
