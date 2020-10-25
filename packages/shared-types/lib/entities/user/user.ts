@@ -1,16 +1,19 @@
 import { ReqType } from '../../../../server/src/routes/v1/shared';
+import { IAccountDocument } from '../account';
 import { Base, ResBody } from '../shared';
 
-export interface IUserDocument extends IUser {
-    _id: string;
+export interface IUserDocument<ID = string, Decimal = unknown>
+    extends Omit<IUser, 'account'> {
+    _id: ID;
+    account: ID | IAccountDocument<ID, Decimal>;
 }
 
 export interface IUser extends Base {
+    account: null;
     name: string;
     email: string;
     password: string;
     authorize: 'READ' | 'READ_WRITE' | 'ADMIN' | 'MASTER';
-    account: string | null;
     isValidated: Date | true; // Default Date to TTL.
     last_login: Date;
 }

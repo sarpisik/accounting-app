@@ -13,6 +13,7 @@ export function auth(service: UserService) {
         next
     ) {
         const userId = req.session?.userId;
+        console.log(userId);
 
         if (userId) res.locals.account = await service.getUserById(userId);
 

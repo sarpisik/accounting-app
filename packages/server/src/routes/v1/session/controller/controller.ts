@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
     DeleteSignOut,
+    GetSessionUser,
     PostConfirmEmail,
     PostSignIn,
     PostSignUp,
 } from '@shared-types/entities';
-import { SessionPath } from '@shared-types/routes';
+import { PATHS, pathWithLeadSlash, SessionPath } from '@shared-types/routes';
 import {
     CreateFailedError,
     DocNotFoundError,
@@ -16,10 +17,11 @@ import {
 import { successPayload } from '@shared/functions';
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { ResType, withCatchError } from '../../shared';
+import { Decimal128, ObjectID } from 'mongodb';
+import { auth, authenticated, ResType, withCatchError } from '../../shared';
 import { AccountService, UserService } from '../../shared/services';
 import { IAccountDocument } from '../../shared/services/account/types';
-import { IUserDocument } from '../../shared/services/users/types';
+import { IUserWithAccount } from '../../shared/services/users/types';
 import {
     compareHashPass,
     withHashPassword,
@@ -36,7 +38,14 @@ interface ConfirmEmailLocals<ResBody> extends ResType<ResBody> {
 }
 
 interface SignInLocals<ResBody> extends ResType<ResBody> {
-    locals: Record<'user', IUserDocument>;
+    locals: Record<'user', IUserWithAccount>;
+}
+
+interface SessionUserLocals<ResBody> extends ResType<ResBody> {
+    locals: Record<
+        'user',
+        GetSessionUser<ObjectID, Decimal128>['resBody']['success']['payload']
+    >;
 }
 
 export default class SessionController extends SessionPath {
@@ -51,8 +60,14 @@ export default class SessionController extends SessionPath {
     ) {
         super();
 
+        this.router.get(
+            pathWithLeadSlash(PATHS.SESSION),
+            auth(this._userService),
+            authenticated(),
+            this.sendUser
+        );
         this.router.post(
-            '/sign-in',
+            pathWithLeadSlash(PATHS.SIGN_IN),
             this.signInValidator.fields,
             this.signInValidator.validate,
             this.checkUserByEmail,
@@ -61,7 +76,7 @@ export default class SessionController extends SessionPath {
             this.setSession
         );
         this.router.post(
-            '/sign-up',
+            pathWithLeadSlash(PATHS.SIGN_UP),
             this.signUpValidator.fields,
             this.signUpValidator.validate,
             checkEmailUsed(this._userService),
@@ -70,19 +85,29 @@ export default class SessionController extends SessionPath {
         // Ignore overload local params
         // @ts-ignore
         this.router.post(
-            '/confirm-email',
+            pathWithLeadSlash(PATHS.CONFIRM_EMAIL),
             this.confirmEmailValidator.fields,
             this.confirmEmailValidator.validate,
             this.createAccount,
             this.confirmEmail
         );
-        this.router.delete('/sign-out', this.signOut);
+        this.router.delete(pathWithLeadSlash(PATHS.SIGN_OUT), this.signOut);
     }
 
+    sendUser = withCatchError<
+        any,
+        GetSessionUser<ObjectID, Decimal128>['resBody']['success'],
+        SessionUserLocals<
+            GetSessionUser<ObjectID, Decimal128>['resBody']['success']
+        >
+    >(async (_req, res) => {
+        res.status(StatusCodes.OK).json(successPayload(res.locals.user));
+    });
+
     checkUserByEmail = withCatchError<
-        PostSignIn['req'],
-        PostSignIn['resBody']['success'],
-        SignInLocals<PostSignIn['resBody']['success']>
+        PostSignIn<ObjectID>['req'],
+        PostSignIn<ObjectID>['resBody']['success'],
+        SignInLocals<PostSignIn<ObjectID>['resBody']['success']>
     >(async (req, res, next) => {
         const { email } = req.body,
             user = await this._userService.getUserWithAccount(
@@ -99,9 +124,9 @@ export default class SessionController extends SessionPath {
     });
 
     checkUserPass = withCatchError<
-        PostSignIn['req'],
-        PostSignIn['resBody']['success'],
-        SignInLocals<PostSignIn['resBody']['success']>
+        PostSignIn<ObjectID>['req'],
+        PostSignIn<ObjectID>['resBody']['success'],
+        SignInLocals<PostSignIn<ObjectID>['resBody']['success']>
     >(async (req, res, next) => {
         const { email, password } = req.body,
             { password: hashedPass } = res.locals.user,
@@ -113,9 +138,9 @@ export default class SessionController extends SessionPath {
     });
 
     signIn = withCatchError<
-        PostSignIn['req'],
-        PostSignIn['resBody']['success'],
-        SignInLocals<PostSignIn['resBody']['success']>
+        PostSignIn<ObjectID>['req'],
+        PostSignIn<ObjectID>['resBody']['success'],
+        SignInLocals<PostSignIn<ObjectID>['resBody']['success']>
     >(async (_req, res, next) => {
         const { _id } = res.locals.user,
             user = await this._userService.updateUserById(_id.toString(), {
@@ -128,9 +153,9 @@ export default class SessionController extends SessionPath {
     });
 
     setSession = withCatchError<
-        PostSignIn['req'],
-        PostSignIn['resBody']['success'],
-        SignInLocals<PostSignIn['resBody']['success']>
+        PostSignIn<ObjectID>['req'],
+        PostSignIn<ObjectID>['resBody']['success'],
+        SignInLocals<PostSignIn<ObjectID>['resBody']['success']>
     >(async (req, res) => {
         const { session } = req,
             { password, ...localUser } = res.locals.user;

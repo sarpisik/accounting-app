@@ -1,10 +1,10 @@
 import { configureStore, Action } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
 
-import { mode } from './slices';
+import { auth, mode } from './slices';
 
 export const store = configureStore({
-    reducer: { mode },
+    reducer: { auth, mode },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

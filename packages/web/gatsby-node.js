@@ -82,7 +82,9 @@ exports.onCreatePage = async ({
     page,
     actions: { createPage, deletePage },
 }) => {
-    const notIndexPage = page.path !== '/';
+    const notIndexPage = page.path !== '/',
+        appPage = page.path.match(/^\/app/);
+
     if (notIndexPage) {
         // Delete the original pages which auto created and other than above
         await deletePage(page);
@@ -90,13 +92,18 @@ exports.onCreatePage = async ({
         // Create one page for each locale
         await Promise.all(
             config.siteMetadata.locales.map((locale) => {
-                const localizedPath = `/${locale}${page.path}`;
+                const localizedPath = `/${locale}${page.path}`,
+                    newPage = {
+                        ...page,
+                        context: { ...page.context, locale },
+                        path: localizedPath,
+                    };
 
-                return createPage({
-                    ...page,
-                    context: { ...page.context, locale },
-                    path: localizedPath,
-                });
+                // Enable direct navigation to client-side routes right after
+                // the "/app" path.
+                if (appPage) newPage.matchPath = `/${locale}/app/*`;
+
+                return createPage(newPage);
             })
         );
     }

@@ -1,5 +1,12 @@
 {
     "translations": {
+        "api": {
+            "session": {
+                "loading": "Sunucuya bağlanılıyor, lütfen bekleyiniz...",
+                "preLoading": "Oturum açılıyor, lütfen bekleyiniz.....",
+                "unExpectedError": "Sunucuya bağlanırken beklenmedik bir hata oluştu. Lütfen tekrar deneyiniz."
+            }
+        },
         "app": {
             "links": {
                 "accounts": "cariler",

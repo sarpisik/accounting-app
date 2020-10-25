@@ -1,5 +1,12 @@
 {
     "translations": {
+        "api": {
+            "session": {
+                "loading": "Connecting to the server, please wait...",
+                "preLoading": "Logging in please wait....",
+                "unExpectedError": "An unexpected error occurred while connecting to the server. Please try again."
+            }
+        },
         "app": {
             "links": {
                 "accounts": "accounts",

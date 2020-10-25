@@ -1,7 +1,7 @@
-import { IUserDocument } from '../../../../server/src/routes/v1/shared/services/users/types';
 import { ReqType } from '../../../../server/src/routes/v1/shared';
-import { ResBody } from '../shared';
-import { IUser } from '../user';
+import { IAccountDocument } from '../account';
+import { ErrorTypes, ResBody } from '../shared';
+import { IUser, IUserDocument } from '../user';
 
 type SignBody = Pick<IUser, 'name' | 'email' | 'password'>;
 
@@ -9,9 +9,9 @@ interface PostSignInReq extends ReqType {
     body: Omit<SignBody, 'name'>;
 }
 
-export interface PostSignIn {
+export interface PostSignIn<ID = string> {
     req: PostSignInReq;
-    resBody: ResBody<Omit<IUserDocument, 'password'>>;
+    resBody: ResBody<Omit<IUserDocument<ID>, 'password'>>;
 }
 
 interface PostSignUpReq extends ReqType {
@@ -35,4 +35,17 @@ export interface PostConfirmEmail {
 export interface DeleteSignOut {
     req: ReqType;
     resBody: ResBody<null>;
+}
+
+export interface GetSessionUser<ID, Decimal> {
+    req: ReqType;
+    resBody: ResBody<
+        Omit<IUserDocument<ID>, 'password' | 'account'> & {
+            account: Extract<
+                IUserDocument<ID>['account'],
+                IAccountDocument<ID, Decimal>
+            >;
+        },
+        ErrorTypes.UNAUTHORIZED
+    >;
 }
