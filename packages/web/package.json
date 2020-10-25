@@ -15,7 +15,7 @@
         "@types/react-helmet": "6.1.0",
         "@types/react-redux": "7.1.9",
         "bulma": "^0.9.0",
-        "gatsby": "^2.20.35",
+        "gatsby": "^2.24.85",
         "gatsby-image": "^2.3.5",
         "gatsby-plugin-material-ui": "2.1.10",
         "gatsby-plugin-netlify-cms": "^4.2.5",
@@ -58,10 +58,21 @@
         "build": "npm run clean && gatsby build",
         "dev": "npm run clean && gatsby develop",
         "format": "prettier --write \"{gatsby-*.js,src/**/*.js,src/**/*.ts,src/**/*.tsx}\"",
+        "lint": "eslint --debug /Users/sarpisik/Projects/sarpisik/accounting-app/packages/web/src/templates/app/dashboard/Dashboard.tsx",
         "ggl-types": "graphql-codegen --config codegen.yml",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest"
     },
     "devDependencies": {
-        "@graphql-codegen/cli": "^1.17.10"
+        "@graphql-codegen/cli": "^1.17.10",
+        "@testing-library/jest-dom": "5.11.5",
+        "@testing-library/react": "11.1.0",
+        "@types/jest": "26.0.15",
+        "babel-jest": "26.6.1",
+        "babel-preset-gatsby": "0.5.14",
+        "eslint-plugin-react": "7.21.5",
+        "eslint-plugin-react-hooks": "4.2.0",
+        "identity-obj-proxy": "3.0.0",
+        "jest": "26.6.1",
+        "tslint-react": "5.0.0"
     }
 }

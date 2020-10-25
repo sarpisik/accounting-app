@@ -4,8 +4,8 @@ import { PageProps } from '../types';
 
 export default withAuthorization(Dashboard);
 
-function Dashboard(props: PageProps): React.ReactElement {
+export function Dashboard(props: PageProps): React.ReactElement {
     console.log('dashboard page rendered');
 
-    return <div>dashboard page</div>;
+    return <div data-testid="dashboard-view">dashboard page</div>;
 }
