@@ -60,6 +60,7 @@
         "format": "prettier --write \"{gatsby-*.js,src/**/*.js,src/**/*.ts,src/**/*.tsx}\"",
         "type-check": "../../node_modules/.bin/tsc --project ./tsconfig.json",
         "ggl-types": "graphql-codegen --config codegen.yml",
+        "lint": "eslint 'src/**/*.{js,ts,tsx}' 'plugins/**/*.{js,ts,tsx}' --quiet --fix",
         "test": "jest"
     },
     "devDependencies": {

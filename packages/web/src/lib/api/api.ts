@@ -12,7 +12,7 @@ type RequestOptions<Body = unknown> = Omit<BaseRequestOptions, 'body'> & {
 async function customFetch<B>(
     ...params: FetchParams
 ): Promise<HttpResponse<B>> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     const response: HttpResponse<B> = await fetch(...params);
     if (response.body) response.parsedBody = await response.json();

@@ -1,1 +1,1 @@
-export { getThemeByName } from "./theme"
+export { getThemeByName } from './theme';

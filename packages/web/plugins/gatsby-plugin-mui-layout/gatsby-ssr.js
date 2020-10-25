@@ -1,6 +1,6 @@
-import React from "react"
-import ThemeProvider from "./ThemeProvider"
+import React from 'react';
+import ThemeProvider from './ThemeProvider';
 
 export const wrapRootElement = ({ element }) => {
-  return <ThemeProvider>{element}</ThemeProvider>
-}
+    return <ThemeProvider>{element}</ThemeProvider>;
+};
