@@ -13,7 +13,7 @@ type SessionUserResponse =
 
 export type SessionUser = GetSessionUserResponse['success']['payload'];
 
-export class SessionUserApi extends Api {
+class _SessionUserApi extends Api {
     constructor() {
         super(new SessionPath().path.concat(pathWithLeadSlash(PATHS.SESSION)));
     }
@@ -21,6 +21,8 @@ export class SessionUserApi extends Api {
     getSessionUser: () => Promise<SessionUserResponse> = () =>
         this._getRequest<SessionUserResponse>().then((res) => res.parsedBody);
 }
+
+export const SessionUserApi = new _SessionUserApi();
 
 export function getSessionFailed(
     response: SessionUserResponse

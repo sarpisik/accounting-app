@@ -58,7 +58,7 @@
         "build": "npm run clean && gatsby build",
         "dev": "npm run clean && gatsby develop",
         "format": "prettier --write \"{gatsby-*.js,src/**/*.js,src/**/*.ts,src/**/*.tsx}\"",
-        "lint": "eslint --debug /Users/sarpisik/Projects/sarpisik/accounting-app/packages/web/src/templates/app/dashboard/Dashboard.tsx",
+        "type-check": "../../node_modules/.bin/tsc --project ./tsconfig.json",
         "ggl-types": "graphql-codegen --config codegen.yml",
         "test": "jest"
     },

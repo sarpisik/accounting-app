@@ -10,7 +10,7 @@ export interface ResBody<S, T extends ErrorTypes = any, E = unknown> {
     };
 }
 
-export const enum ErrorTypes {
+export enum ErrorTypes {
     INVALID_FIELDS = 'INVALID_FIELDS',
     BAD_REQUEST = 'BAD_REQUEST',
     UNAUTHORIZED = 'UNAUTHORIZED',
@@ -23,21 +23,21 @@ export const enum ErrorTypes {
     EMAIL_NOT_CONFIRMED = 'EMAIL_NOT_CONFIRMED',
 }
 
-export const enum MongoErrors {
+export enum MongoErrors {
     INVALID_ID = 'INVALID_ID',
 }
 
-export const enum EmailValidationErrors {
+export enum EmailValidationErrors {
     INVALID_EMAIL = 'INVALID_EMAIL',
     INVALID_EMAIL_LENGTH = 'INVALID_EMAIL_LENGTH',
     EMPTY_EMAIL = 'EMPTY_EMAIL',
 }
 
-export const enum UserNameValidationErrors {
+export enum UserNameValidationErrors {
     INVALID_NAME_LENGTH = 'INVALID_NAME_LENGTH',
 }
 
-export const enum PasswordValidationErrors {
+export enum PasswordValidationErrors {
     EMPTY_PASSWORD = 'EMPTY_PASSWORD',
     INVALID_PASSWORD_LENGTH = 'INVALID_PASSWORD_LENGTH',
     PASSWORDS_NOT_MATCH = 'PASSWORDS_NOT_MATCH',

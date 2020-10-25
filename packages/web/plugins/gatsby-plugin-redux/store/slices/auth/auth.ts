@@ -54,7 +54,7 @@ export const getAuth: () => Thunk = () => async (dispatch) => {
     try {
         dispatch(preGetAuth());
 
-        const response = await new SessionUserApi().getSessionUser();
+        const response = await SessionUserApi.getSessionUser();
 
         dispatch(
             getAuthSuccess(getSessionFailed(response) ? null : response.payload)
