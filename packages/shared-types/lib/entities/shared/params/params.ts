@@ -6,7 +6,7 @@ export interface ResBody<S, T extends ErrorTypes = any, E = unknown> {
     error: {
         status: 'ERROR';
         type: T;
-        payload?: E;
+        payload: E;
     };
 }
 

@@ -22,7 +22,9 @@ async function customFetch<B>(
 export class Api {
     constructor(
         public path: string,
-        private _config: BaseRequestOptions = Object.create(null)
+        private _config: BaseRequestOptions = {
+            headers: { 'Content-Type': 'application/json' },
+        }
     ) {}
 
     protected _withJson: <R>(

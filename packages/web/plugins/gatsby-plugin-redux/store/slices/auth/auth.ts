@@ -35,7 +35,7 @@ export const authSlice = createSlice({
     },
 });
 
-const { getAuthSuccess, getAuthFailed, preGetAuth } = authSlice.actions;
+export const { getAuthSuccess, getAuthFailed, preGetAuth } = authSlice.actions;
 
 /* -------------------------------- Selector -------------------------------- */
 const authSelector: (state: RootState) => Auth = (state) => state.auth;

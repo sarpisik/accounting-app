@@ -3,19 +3,23 @@ import {
     PasswordValidationErrors,
     UserNameValidationErrors,
 } from '@shared-types/entities/shared';
-import { INPUT_PASSWORD } from '@shared-types/inputFields';
+import {
+    INPUT_EMAIL,
+    INPUT_NAME,
+    INPUT_PASSWORD,
+} from '@shared-types/inputFields';
 import { check } from 'express-validator';
 import { Validator } from '../../shared';
 
 const email = check('email')
         .isEmail()
         .withMessage(EmailValidationErrors.INVALID_EMAIL)
-        .isLength({ min: 4, max: 200 })
+        .isLength(INPUT_EMAIL)
         .withMessage(EmailValidationErrors.INVALID_EMAIL_LENGTH)
         .normalizeEmail({ gmail_remove_dots: false })
         .withMessage(EmailValidationErrors.EMPTY_EMAIL),
     name = check('name')
-        .isLength({ min: 1, max: 100 })
+        .isLength(INPUT_NAME)
         .withMessage(UserNameValidationErrors.INVALID_NAME_LENGTH),
     password = check('password')
         .isLength(INPUT_PASSWORD)

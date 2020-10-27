@@ -3,7 +3,7 @@
         "api": {
             "session": {
                 "loading": "Sunucuya bağlanılıyor, lütfen bekleyiniz...",
-                "preLoading": "Oturum açılıyor, lütfen bekleyiniz.....",
+                "preLoading": "Oturum açılıyor, lütfen bekleyiniz...",
                 "unExpectedError": "Sunucuya bağlanırken beklenmedik bir hata oluştu. Lütfen tekrar deneyiniz."
             }
         },
@@ -17,6 +17,37 @@
                 "signUp": "üye ol",
                 "transactions": "hareketler",
                 "users": "kullanıcılar"
+            }
+        },
+        "views": {
+            "sign-in": {
+                "form": {
+                    "email": {
+                        "error": {
+                            "invalid": "E-posta geçersiz.",
+                            "invalidLength": "E-posta uzunluğu geçersiz.",
+                            "max": "E-posta en fazla {{max}} karakter uzunluğunda olmalıdır.",
+                            "min": "E-posta en az {{min}} karakter uzunluğunda olmalıdır.",
+                            "required": "E-posta boş olamaz."
+                        },
+                        "label": "e-posta"
+                    },
+                    "password": {
+                        "error": {
+                            "invalidLength": "Parola uzunluğu geçersiz.",
+                            "max": "Parola en fazla {{max}} karakter uzunluğunda olmalıdır.",
+                            "min": "Parola en az {{min}} karakter uzunluğunda olmalıdır.",
+                            "required": "Parola boş olamaz."
+                        },
+                        "label": "parola"
+                    },
+                    "reset": "Sıfırla",
+                    "submit": "Oturum aç"
+                },
+                "error": {
+                    "emailNotConfirmed": "E-posta onaylanmadı.",
+                    "passwordInvalid": "Şifre geçersiz."
+                }
             }
         }
     }

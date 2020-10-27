@@ -18,6 +18,37 @@
                 "transactions": "transactions",
                 "users": "users"
             }
+        },
+        "views": {
+            "sign-in": {
+                "form": {
+                    "email": {
+                        "error": {
+                            "invalid": "Email invalid.",
+                            "invalidLength": "Email length invalid.",
+                            "max": "Email must be {{max}} char long maximum.",
+                            "min": "Email must be {{min}} char long minimum.",
+                            "required": "Email can not be empty."
+                        },
+                        "label": "email"
+                    },
+                    "password": {
+                        "error": {
+                            "invalidLength": "Password length invalid.",
+                            "max": "Password must be {{max}} char long maximum.",
+                            "min": "Password must be {{min}} char long minimum.",
+                            "required": "Password can not be empty."
+                        },
+                        "label": "password"
+                    },
+                    "reset": "Reset",
+                    "submit": "Sign in"
+                },
+                "error": {
+                    "emailNotConfirmed": "Email unconfirmed.",
+                    "passwordInvalid": "Password invalid."
+                }
+            }
         }
     }
 }

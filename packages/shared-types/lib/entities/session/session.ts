@@ -3,15 +3,32 @@ import { IAccountDocument } from '../account';
 import { ErrorTypes, ResBody } from '../shared';
 import { IUser, IUserDocument } from '../user';
 
+type SessionUser<ID, Decimal> = Omit<
+    IUserDocument<ID>,
+    'password' | 'account'
+> & {
+    account: Extract<
+        IUserDocument<ID>['account'],
+        IAccountDocument<ID, Decimal>
+    >;
+};
+
 type SignBody = Pick<IUser, 'name' | 'email' | 'password'>;
 
 interface PostSignInReq extends ReqType {
     body: Omit<SignBody, 'name'>;
 }
 
-export interface PostSignIn<ID = string> {
+export interface PostSignIn<ID, Decimal> {
     req: PostSignInReq;
-    resBody: ResBody<Omit<IUserDocument<ID>, 'password'>>;
+    resBody: ResBody<
+        SessionUser<ID, Decimal>,
+        | ErrorTypes.EMAIL_NOT_CONFIRMED
+        | ErrorTypes.PASSWORD_INVALID
+        | ErrorTypes.BAD_REQUEST
+        | ErrorTypes.MUTATE_FAILED,
+        string
+    >;
 }
 
 interface PostSignUpReq extends ReqType {
@@ -39,13 +56,5 @@ export interface DeleteSignOut {
 
 export interface GetSessionUser<ID, Decimal> {
     req: ReqType;
-    resBody: ResBody<
-        Omit<IUserDocument<ID>, 'password' | 'account'> & {
-            account: Extract<
-                IUserDocument<ID>['account'],
-                IAccountDocument<ID, Decimal>
-            >;
-        },
-        ErrorTypes.UNAUTHORIZED
-    >;
+    resBody: ResBody<SessionUser<ID, Decimal>, ErrorTypes.UNAUTHORIZED>;
 }

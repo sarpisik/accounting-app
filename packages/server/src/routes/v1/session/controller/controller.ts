@@ -105,9 +105,9 @@ export default class SessionController extends SessionPath {
     });
 
     checkUserByEmail = withCatchError<
-        PostSignIn<ObjectID>['req'],
-        PostSignIn<ObjectID>['resBody']['success'],
-        SignInLocals<PostSignIn<ObjectID>['resBody']['success']>
+        PostSignIn<ObjectID, Decimal128>['req'],
+        PostSignIn<ObjectID, Decimal128>['resBody']['success'],
+        SignInLocals<PostSignIn<ObjectID, Decimal128>['resBody']['success']>
     >(async (req, res, next) => {
         const { email } = req.body,
             user = await this._userService.getUserWithAccount(
@@ -124,9 +124,9 @@ export default class SessionController extends SessionPath {
     });
 
     checkUserPass = withCatchError<
-        PostSignIn<ObjectID>['req'],
-        PostSignIn<ObjectID>['resBody']['success'],
-        SignInLocals<PostSignIn<ObjectID>['resBody']['success']>
+        PostSignIn<ObjectID, Decimal128>['req'],
+        PostSignIn<ObjectID, Decimal128>['resBody']['success'],
+        SignInLocals<PostSignIn<ObjectID, Decimal128>['resBody']['success']>
     >(async (req, res, next) => {
         const { email, password } = req.body,
             { password: hashedPass } = res.locals.user,
@@ -138,9 +138,9 @@ export default class SessionController extends SessionPath {
     });
 
     signIn = withCatchError<
-        PostSignIn<ObjectID>['req'],
-        PostSignIn<ObjectID>['resBody']['success'],
-        SignInLocals<PostSignIn<ObjectID>['resBody']['success']>
+        PostSignIn<ObjectID, Decimal128>['req'],
+        PostSignIn<ObjectID, Decimal128>['resBody']['success'],
+        SignInLocals<PostSignIn<ObjectID, Decimal128>['resBody']['success']>
     >(async (_req, res, next) => {
         const { _id } = res.locals.user,
             user = await this._userService.updateUserById(_id.toString(), {
@@ -153,9 +153,9 @@ export default class SessionController extends SessionPath {
     });
 
     setSession = withCatchError<
-        PostSignIn<ObjectID>['req'],
-        PostSignIn<ObjectID>['resBody']['success'],
-        SignInLocals<PostSignIn<ObjectID>['resBody']['success']>
+        PostSignIn<ObjectID, Decimal128>['req'],
+        PostSignIn<ObjectID, Decimal128>['resBody']['success'],
+        SignInLocals<PostSignIn<ObjectID, Decimal128>['resBody']['success']>
     >(async (req, res) => {
         const { session } = req,
             { password, ...localUser } = res.locals.user;
