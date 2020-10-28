@@ -26,4 +26,6 @@ export function useNavigate() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [shouldNavigate, translate.i18n.language]
     );
+
+    return shouldNavigate;
 }

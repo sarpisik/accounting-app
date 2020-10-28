@@ -6,8 +6,8 @@ export function withUser<P>(WrappedComponent: React.ComponentType<P>) {
         props: React.ComponentProps<typeof WrappedComponent>
     ) {
         // Navigates to dashboard if authorized already.
-        useNavigate();
+        const shouldNotRender = useNavigate();
 
-        return <WrappedComponent {...props} />;
+        return shouldNotRender ? null : <WrappedComponent {...props} />;
     };
 }

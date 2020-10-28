@@ -28,6 +28,31 @@ describe(`"HOC: ${withUser.name}"`, () => {
         mockApi.mockRestore();
     });
 
+    it('should not render wrapped component when authorized', async () => {
+        const user = { name: 'test user' };
+
+        mockApi = mockApi.mockResolvedValueOnce({
+            status: 'SUCCESS',
+            payload: user,
+        });
+
+        renderWithStoreAndRouter({
+            ui: <WithUser {...props} />,
+        });
+
+        expect(screen.queryByTestId(dataTestId)).toBeNull();
+
+        await waitFor(() => {
+            expect(store.getState().auth).toEqual({
+                status: 'SUCCESS',
+                user,
+                content: '',
+            });
+        });
+
+        expect(screen.queryByTestId(dataTestId)).toBeNull();
+    });
+
     it('should render wrapped component when unauthorized', async () => {
         mockApi = mockApi.mockResolvedValueOnce({
             status: 'ERROR',
