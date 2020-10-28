@@ -6,11 +6,12 @@ import {
 } from '../../../../../../shared-types/lib';
 import { Api } from '../../api';
 
-type SignUpResponse =
-    | PostSignUp['resBody']['success']
-    | PostSignUp['resBody']['error'];
+export type ISignUpResponse = PostSignUp['resBody'];
+export type SignUpResponse =
+    | ISignUpResponse['success']
+    | ISignUpResponse['error'];
 
-export class SignUpApi extends Api {
+class _SignUpApi extends Api {
     constructor() {
         super(new SessionPath().path.concat(pathWithLeadSlash(PATHS.SIGN_UP)));
     }
@@ -18,10 +19,12 @@ export class SignUpApi extends Api {
     signUpUser: (body: PostSignUp['req']['body']) => Promise<SignUpResponse> = (
         body
     ) =>
-        super
-            ._postRequest<SignUpResponse>({ body })
-            .then((res) => res.parsedBody);
+        this._postRequest<SignUpResponse>({ body }).then(
+            (res) => res.parsedBody
+        );
 }
+
+export const SignUpApi = new _SignUpApi();
 
 export function signUpFailed(
     response: SignUpResponse

@@ -5,9 +5,7 @@ import { Form } from './components';
 
 export default withUser(SignIn);
 
-export function SignIn(props: PageProps): React.ReactElement {
-    console.log('sign in page rendered');
-
+export function SignIn(_props: PageProps): React.ReactElement {
     return (
         <div data-testid="sign-in-view">
             <Form />

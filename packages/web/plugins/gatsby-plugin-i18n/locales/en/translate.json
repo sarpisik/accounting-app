@@ -52,6 +52,34 @@
                     "sign-up": "Create a new account."
                 },
                 "success": "Login successfully. You are redirected to the application. Please wait..."
+            },
+            "sign-up": {
+                "error": {
+                    "emailTaken": "E-mail address is used."
+                },
+                "form": {
+                    "name": {
+                        "error": {
+                            "invalidLength": "Name length invalid.",
+                            "max": "Name must be {{max}} char long maximum.",
+                            "min": "Name must be {{min}} char long minimum.",
+                            "required": "Name can not be empty."
+                        },
+                        "label": "Name"
+                    },
+                    "passwordConfirm": {
+                        "error": {
+                            "passwordsDoNotMatch": "Passwords do not match.",
+                            "required": "Password can not be empty."
+                        },
+                        "label": "Password Repeat"
+                    },
+                    "submit": "Sign up"
+                },
+                "links": {
+                    "sign-in": "I have an account already."
+                },
+                "success": "A confirmation email sent to {{email}}."
             }
         }
     }

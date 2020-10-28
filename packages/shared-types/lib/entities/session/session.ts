@@ -37,7 +37,7 @@ interface PostSignUpReq extends ReqType {
 
 export interface PostSignUp {
     req: PostSignUpReq;
-    resBody: ResBody<null>;
+    resBody: ResBody<null, ErrorTypes.EMAIL_TAKEN, string>;
 }
 
 interface PostConfirmEmailReq extends ReqType {

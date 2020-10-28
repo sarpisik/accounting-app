@@ -52,6 +52,34 @@
                     "sign-up": "Yeni bir hesap oluştur."
                 },
                 "success": "Oturum başarıyla açıldı. Uygulamaya yönlendiriliyorsunuz. Lütfen bekleyiniz..."
+            },
+            "sign-up": {
+                "error": {
+                    "emailTaken": "E-posta adresi kullanılmaktadır."
+                },
+                "form": {
+                    "name": {
+                        "error": {
+                            "invalidLength": "İsim uzunluğu geçersiz.",
+                            "max": "İsim en fazla {{max}} karakter uzunluğunda olmalıdır.",
+                            "min": "İsim en az {{min}} karakter uzunluğunda olmalıdır.",
+                            "required": "İsim boş olamaz."
+                        },
+                        "label": "İsim"
+                    },
+                    "passwordConfirm": {
+                        "error": {
+                            "passwordsDoNotMatch": "Parolalar uyuşmuyor.",
+                            "required": "Parola boş olamaz."
+                        },
+                        "label": "Şifre tekrarlama"
+                    },
+                    "submit": "Kaydol"
+                },
+                "links": {
+                    "sign-in": "Zaten bir hesabım var."
+                },
+                "success": "{{email}} adresine bir onay e-postası gönderildi."
             }
         }
     }

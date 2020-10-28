@@ -1,8 +1,16 @@
 import React from 'react';
+import { withUser } from '../../../components';
 import { PageProps } from '../types';
+import { Form } from './components';
 
-export default function SignUp(props: PageProps): React.ReactElement {
-    console.log('sign-up page rendered');
+export default withUser(SignUp);
 
-    return <div data-testid="sign-up-view">sign-up page</div>;
+export const signUpTestId = 'sign-up-view';
+
+export function SignUp(_props: PageProps): React.ReactElement {
+    return (
+        <div data-testid={signUpTestId}>
+            <Form />
+        </div>
+    );
 }

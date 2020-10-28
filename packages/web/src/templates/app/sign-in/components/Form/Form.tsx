@@ -39,14 +39,14 @@ export function Form(props: FormProps): React.ReactElement {
                     return t('views.sign-in.success');
                 },
             }}
-            apiErrorConverter={apiErrorConverter}
-            validationErrorConverter={validationErrorConverter}
+            apiErrorConverter={signInApiErrorConverter}
+            validationErrorConverter={signInValidationErrorConverter}
             LayoutComponent={Layout}
         />
     );
 }
 
-function apiErrorConverter(errorType: ErrorTypes) {
+export function signInApiErrorConverter(errorType: ErrorTypes) {
     switch (errorType) {
         case ErrorTypes.EMAIL_NOT_CONFIRMED:
             return nsReducer('emailNotConfirmed');
@@ -61,7 +61,7 @@ function nsReducer(key: string, ns = errorLocaleNs) {
     return `${ns}.`.concat(key);
 }
 
-function validationErrorConverter(
+export function signInValidationErrorConverter(
     msg: EmailValidationErrors | PasswordValidationErrors | string
 ) {
     switch (msg) {
