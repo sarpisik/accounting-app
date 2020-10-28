@@ -21,6 +21,10 @@
         },
         "views": {
             "sign-in": {
+                "error": {
+                    "emailNotConfirmed": "E-posta onaylanmadı.",
+                    "passwordInvalid": "Şifre geçersiz."
+                },
                 "form": {
                     "email": {
                         "error": {
@@ -44,10 +48,10 @@
                     "reset": "Sıfırla",
                     "submit": "Oturum aç"
                 },
-                "error": {
-                    "emailNotConfirmed": "E-posta onaylanmadı.",
-                    "passwordInvalid": "Şifre geçersiz."
-                }
+                "links": {
+                    "sign-up": "Yeni bir hesap oluştur."
+                },
+                "success": "Oturum başarıyla açıldı. Uygulamaya yönlendiriliyorsunuz. Lütfen bekleyiniz..."
             }
         }
     }

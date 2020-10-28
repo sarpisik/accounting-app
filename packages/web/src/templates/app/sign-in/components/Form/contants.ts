@@ -1,2 +1,4 @@
-export const formLocaleNs = 'views.sign-in.form';
-export const errorLocaleNs = 'views.sign-in.error';
+export const signInLocaleNs = 'views.sign-in';
+export const formLocaleNs = `${signInLocaleNs}.form`;
+export const errorLocaleNs = `${signInLocaleNs}.error`;
+export const linksLocaleNs = `${signInLocaleNs}.links`;

@@ -7,8 +7,10 @@ import {
 import { Api } from '../../api';
 
 type ResolvedPostSignIn = PostSignIn<string, unknown>;
-type ISignInResponse = ResolvedPostSignIn['resBody'];
-type SignInResponse = ISignInResponse['success'] | ISignInResponse['error'];
+export type ISignInResponse = ResolvedPostSignIn['resBody'];
+export type SignInResponse =
+    | ISignInResponse['success']
+    | ISignInResponse['error'];
 
 class _SignInApi extends Api {
     constructor() {

@@ -9,7 +9,8 @@ import { Status } from '../../hooks';
 import { useFeedback } from './hooks';
 
 interface Props extends Status {
-    onFeedbackClick: () => void;
+    onFeedbackClick(): void;
+    apiErrorConverter(param: Status['type']): string;
 }
 
 const useStyles = makeStyles((theme) =>
@@ -22,15 +23,17 @@ const useStyles = makeStyles((theme) =>
 );
 
 export function Feedback(props: Props): React.ReactElement {
-    const { onFeedbackClick, status, type } = props,
+    const { onFeedbackClick, apiErrorConverter, status, type, content } = props,
         classes = useStyles(),
         [open, setOpen] = React.useState(false),
         handleClose = () => {
             onFeedbackClick();
         },
-        localizedFeedback = useFeedback(type),
+        localizedFeedback = useFeedback(apiErrorConverter, type, content),
         isLoading = status === 'LOADING',
-        shouldFeedbackError = status === 'ERROR' && localizedFeedback,
+        isError = status === 'ERROR',
+        isSuccess = status === 'SUCCESS',
+        shouldFeedbackError = (isError || isSuccess) && localizedFeedback,
         shouldOpen = Boolean(isLoading || shouldFeedbackError);
 
     React.useEffect(() => {

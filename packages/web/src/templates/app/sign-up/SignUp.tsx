@@ -4,5 +4,5 @@ import { PageProps } from '../types';
 export default function SignUp(props: PageProps): React.ReactElement {
     console.log('sign-up page rendered');
 
-    return <div>sign-up page</div>;
+    return <div data-testid="sign-up-view">sign-up page</div>;
 }

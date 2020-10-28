@@ -21,6 +21,10 @@
         },
         "views": {
             "sign-in": {
+                "error": {
+                    "emailNotConfirmed": "Email unconfirmed.",
+                    "passwordInvalid": "Password invalid."
+                },
                 "form": {
                     "email": {
                         "error": {
@@ -44,10 +48,10 @@
                     "reset": "Reset",
                     "submit": "Sign in"
                 },
-                "error": {
-                    "emailNotConfirmed": "Email unconfirmed.",
-                    "passwordInvalid": "Password invalid."
-                }
+                "links": {
+                    "sign-up": "Create a new account."
+                },
+                "success": "Login successfully. You are redirected to the application. Please wait..."
             }
         }
     }

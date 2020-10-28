@@ -102,6 +102,7 @@ describe(`"COMPONENT: ${Form.name}"`, () => {
                 ).toBeNull();
             });
         });
+
         /*******************************************************************************
          *                              !MIN VALUE ERRORS
          ******************************************************************************/
@@ -211,7 +212,14 @@ describe(`"COMPONENT: ${Form.name}"`, () => {
 
         beforeEach(() => {
             mockApi = jest.spyOn(SignInApi, 'signInUser');
-            renderWithStore({ ui: <Form initialState={formValues} /> });
+            renderWithStore({ ui: <Form /> });
+
+            fireEvent.change(screen.getByTestId(inputTestIds[0]), {
+                target: { value: formValues.email },
+            });
+            fireEvent.change(screen.getByTestId(inputTestIds[1]), {
+                target: { value: formValues.password },
+            });
         });
 
         afterEach(() => {
@@ -419,16 +427,26 @@ describe(`"COMPONENT: ${Form.name}"`, () => {
                 status: 'SUCCESS',
                 payload: { email: formValues.email },
             });
-
             submitForm();
 
+            await waitFor(() => {
+                expect(screen.getByTestId('spinner')).toBeInTheDocument();
+            });
             await waitFor(() => {
                 expect(
                     screen.queryAllByText(
                         translates.translations.api.session.unExpectedError
                     )
                 ).toHaveLength(0);
-                expect(screen.getByTestId('spinner')).toBeInTheDocument();
+                expect(screen.getByTestId('sign-in-form')).toHaveFormValues({
+                    email: '',
+                    password: '',
+                });
+                expect(
+                    screen.queryByText(
+                        translates.translations.views['sign-in'].success
+                    )
+                ).toBeInTheDocument();
             });
         });
     });
