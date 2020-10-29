@@ -3,7 +3,6 @@ import { Router } from '@reach/router';
 import { render as rtlRender } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../../plugins/gatsby-plugin-redux/store';
-import { localizedPath, PATHS } from '../../src/templates/app/lib';
 
 function render(
     ui: Parameters<typeof rtlRender>[0],

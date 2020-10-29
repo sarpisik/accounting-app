@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
 import { useNavigate as _useNavigate } from '@reach/router';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { PATHS } from '../../../../../../shared-types/lib';
 import { useAuth } from '../../../../../plugins/gatsby-plugin-redux/store';
-import { localizedPath, PATHS } from '../../../../templates/app/lib';
+import { localizedPath } from '../../../../templates/app/lib';
 
 export function useNavigate() {
     const navigate = _useNavigate(),

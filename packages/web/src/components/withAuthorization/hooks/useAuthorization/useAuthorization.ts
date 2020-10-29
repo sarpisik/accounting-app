@@ -1,8 +1,9 @@
-import { useAuth } from '../../../../../plugins/gatsby-plugin-redux/store';
 import { useNavigate } from '@reach/router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { localizedPath, PATHS } from '../../../../templates/app/lib';
+import { PATHS } from '../../../../../../shared-types/lib';
+import { useAuth } from '../../../../../plugins/gatsby-plugin-redux/store';
+import { localizedPath } from '../../../../templates/app/lib';
 
 export function useAuthorization(): ReturnType<typeof useAuth> {
     const auth = useAuth(),

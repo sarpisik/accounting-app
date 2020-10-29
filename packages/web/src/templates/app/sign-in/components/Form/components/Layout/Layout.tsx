@@ -1,16 +1,17 @@
-import { Link } from 'gatsby';
 import React from 'react';
+import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import {
     INPUT_EMAIL,
     INPUT_PASSWORD,
+    PATHS,
 } from '../../../../../../../../../shared-types/lib';
 import {
     LocalizedSessionButton,
     LocalizedSessionInput,
     SessionFormLayoutProps,
 } from '../../../../../../../components';
-import { localizedPath, PATHS } from '../../../../../lib';
+import { localizedPath } from '../../../../../lib';
 import { formLocaleNs, linksLocaleNs } from '../../contants';
 import { initialValues } from '../../schema';
 import { TEST_IDS } from './contants';

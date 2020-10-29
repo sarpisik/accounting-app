@@ -1,9 +1,10 @@
 import { Router } from '@reach/router';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { PATHS } from '../../../../shared-types/lib';
 import { withAuthentication, WrappedPageProps } from '../../components';
 import { Dashboard } from './dashboard';
-import { localizedPath, PATHS } from './lib';
+import { localizedPath } from './lib';
 import { SignIn } from './sign-in';
 import { SignUp } from './sign-up';
 

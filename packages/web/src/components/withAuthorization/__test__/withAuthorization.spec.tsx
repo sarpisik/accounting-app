@@ -1,10 +1,11 @@
 import React from 'react';
+import { PATHS } from '../../../../../shared-types/lib';
 import { ErrorTypes } from '../../../../../shared-types/lib/entities/shared';
 import translate from '../../../../plugins/gatsby-plugin-i18n/locales/en/translate.json';
 import { store } from '../../../../plugins/gatsby-plugin-redux/store';
 import { renderWithStoreAndRouter, screen, waitFor } from '../../../../spec';
 import { SessionUserApi } from '../../../lib/api/session/sessionUser';
-import { localizedPath, PATHS } from '../../../templates/app/lib';
+import { localizedPath } from '../../../templates/app/lib';
 import { withAuthentication } from '../../withAuthentication';
 import { UnExpectedError } from '../components';
 import { withAuthorization } from '../withAuthorization';
