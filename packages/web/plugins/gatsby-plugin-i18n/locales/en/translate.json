@@ -20,6 +20,15 @@
             }
         },
         "views": {
+            "confirm-email": {
+                "error": {
+                    "createFailed": "An error occurred while creating an account. Please try again.",
+                    "invalidEmailQuery": "Invalid Email.",
+                    "notFound": "No account registered to this address. Please register again."
+                },
+                "initial": "Email address is being verified. Please wait...",
+                "success": "The e-mail address has been successfully verified. You can login to your account."
+            },
             "sign-in": {
                 "error": {
                     "emailNotConfirmed": "Email unconfirmed.",

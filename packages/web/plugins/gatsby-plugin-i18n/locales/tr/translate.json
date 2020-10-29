@@ -20,6 +20,15 @@
             }
         },
         "views": {
+            "confirm-email": {
+                "error": {
+                    "createFailed": "Hesap oluşturulurken bir hata oluştu. Lütfen tekrar deneyiniz.",
+                    "invalidEmailQuery": "E-posta geçersiz.",
+                    "notFound": "Bu adrese kayıtlı hesap bulunamadı. Lütfen yeniden kayıt olunuz."
+                },
+                "initial": "E-posta adresi doğrulanıyor. Lütfen bekleyiniz...",
+                "success": "E-posta adresi başarıyla doğrulandı. Hesabınıza giriş yapabilirsiniz."
+            },
             "sign-in": {
                 "error": {
                     "emailNotConfirmed": "E-posta onaylanmadı.",

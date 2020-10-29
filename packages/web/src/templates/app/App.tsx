@@ -7,6 +7,7 @@ import { Dashboard } from './dashboard';
 import { localizedPath } from './lib';
 import { SignIn } from './sign-in';
 import { SignUp } from './sign-up';
+import { ConfirmEmail } from './confirm-email';
 
 export default withAuthentication(App);
 
@@ -19,6 +20,7 @@ function App(props: WrappedPageProps): React.ReactElement {
         <Router basepath={localizedPath(locale, [PATHS.APP])}>
             <SignUp path={PATHS.SIGN_UP} />
             <SignIn path={PATHS.SIGN_IN} />
+            <ConfirmEmail path={PATHS.CONFIRM_EMAIL} />
             <Dashboard default />
         </Router>
     );

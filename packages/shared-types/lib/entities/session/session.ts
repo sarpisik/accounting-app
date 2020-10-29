@@ -1,4 +1,5 @@
 import { ReqType } from '../../../../server/src/routes/v1/shared';
+import { ValidationError } from '../../../../web/src/types/errors';
 import { IAccountDocument } from '../account';
 import { ErrorTypes, ResBody } from '../shared';
 import { IUser, IUserDocument } from '../user';
@@ -46,7 +47,11 @@ interface PostConfirmEmailReq extends ReqType {
 
 export interface PostConfirmEmail {
     req: PostConfirmEmailReq;
-    resBody: ResBody<Pick<IUser, 'email' | 'isValidated'>>;
+    resBody: ResBody<
+        Pick<IUser, 'email' | 'isValidated'>,
+        ErrorTypes.CREATE_FAILED | ErrorTypes.NOT_FOUND,
+        string | ValidationError[]
+    >;
 }
 
 export interface DeleteSignOut {

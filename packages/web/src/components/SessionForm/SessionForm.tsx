@@ -1,16 +1,12 @@
-import { FormikConfig, FormikErrors, FormikTouched, useFormik } from 'formik';
 import React from 'react';
+import { FormikConfig, FormikErrors, FormikTouched, useFormik } from 'formik';
 import {
     ErrorTypes,
     ResBody,
 } from '../../../../shared-types/lib/entities/shared';
+import { ValidationError } from '../../types/errors';
 import { Feedback } from './components';
-import {
-    FormEventParams,
-    useFormEvent,
-    useStatusError,
-    ValidationError,
-} from './hooks';
+import { FormEventParams, useFormEvent, useStatusError } from './hooks';
 
 export interface SessionFormLayoutProps<Values>
     extends Omit<React.HtmlHTMLAttributes<HTMLFormElement>, 'onSubmit'> {

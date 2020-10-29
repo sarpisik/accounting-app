@@ -4,12 +4,7 @@ import {
     ResBody,
 } from '../../../../../../shared-types/lib/entities/shared';
 import { BaseState } from '../../../../../plugins/gatsby-plugin-redux/store/slices/shared';
-
-export interface ValidationError {
-    msg: string;
-    param: string;
-    location: string;
-}
+import { ValidationError } from '../../../../types/errors';
 
 export interface Status extends BaseState<string | ValidationError[]> {
     type?: ErrorTypes;
