@@ -1,5 +1,5 @@
-import { Router } from '@reach/router';
 import React from 'react';
+import { Router } from '@reach/router';
 import { useTranslation } from 'react-i18next';
 import { PATHS } from '../../../../shared-types/lib';
 import { withAuthentication, WrappedPageProps } from '../../components';
