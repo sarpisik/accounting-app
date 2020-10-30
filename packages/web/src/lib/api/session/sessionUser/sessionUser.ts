@@ -1,10 +1,10 @@
 import {
+    GetSessionUser,
     PATHS,
     pathWithLeadSlash,
-    GetSessionUser,
     SessionPath,
 } from '../../../../../../shared-types/lib';
-import { Api } from '../../api';
+import { ApiWithCredentials } from '../../apiWithCredentials';
 
 type GetSessionUserResponse = GetSessionUser<string, unknown>['resBody'];
 type SessionUserResponse =
@@ -13,7 +13,7 @@ type SessionUserResponse =
 
 export type SessionUser = GetSessionUserResponse['success']['payload'];
 
-class _SessionUserApi extends Api {
+class _SessionUserApi extends ApiWithCredentials {
     constructor() {
         super(new SessionPath().path.concat(pathWithLeadSlash(PATHS.SESSION)));
     }

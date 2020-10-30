@@ -16,5 +16,5 @@ export function renderWithStore(
         },
     }
 ) {
-    return render(uiOptions.ui, renderOptions);
+    return { ...render(uiOptions.ui, renderOptions), store };
 }

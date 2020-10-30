@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-    Backdrop,
-    CircularProgress,
-    createStyles,
-    makeStyles,
-} from '@material-ui/core';
+import { Backdrop } from '../../../Backdrop';
+import { Spinner } from '../../../Spinner';
 import { Status } from '../../hooks';
 import { useFeedback } from './hooks';
 
@@ -13,18 +9,8 @@ interface Props extends Status {
     apiErrorConverter(param: Status['type']): string;
 }
 
-const useStyles = makeStyles((theme) =>
-    createStyles({
-        backdrop: {
-            zIndex: theme.zIndex.drawer + 1,
-            color: '#fff',
-        },
-    })
-);
-
 export function Feedback(props: Props): React.ReactElement {
     const { onFeedbackClick, apiErrorConverter, status, type, content } = props,
-        classes = useStyles(),
         [open, setOpen] = React.useState(false),
         handleClose = () => {
             onFeedbackClick();
@@ -41,21 +27,12 @@ export function Feedback(props: Props): React.ReactElement {
     }, [shouldOpen]);
 
     return (
-        <Backdrop
-            data-testid="backdrop"
-            className={classes.backdrop}
-            open={open}
-            onClick={handleClose}
-        >
+        <Backdrop open={open} onClick={handleClose}>
             {contentReducer(isLoading, localizedFeedback)}
         </Backdrop>
     );
 }
 
 function contentReducer<F>(isLoading: boolean, feedback: F) {
-    return isLoading ? (
-        <CircularProgress data-testid="spinner" color="inherit" />
-    ) : (
-        feedback
-    );
+    return isLoading ? <Spinner /> : feedback;
 }
