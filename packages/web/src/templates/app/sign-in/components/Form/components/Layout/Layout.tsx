@@ -10,7 +10,7 @@ import {
     LocalizedSessionButton,
     LocalizedSessionInput,
     SessionFormLayoutProps,
-} from '../../../../../../../components';
+} from '../../../../../components';
 import { localizedPath } from '../../../../../lib';
 import { formLocaleNs, linksLocaleNs } from '../../contants';
 import { initialValues } from '../../schema';

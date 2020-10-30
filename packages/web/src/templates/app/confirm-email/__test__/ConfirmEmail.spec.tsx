@@ -183,5 +183,24 @@ describe(`"VIEW:${ConfirmEmail.name}"`, () => {
                 ).toBeInTheDocument();
             });
         });
+
+        /* ****************************** REQUEST CRASH ***************************** */
+        it(`renders "un expected" error.`, async () => {
+            mockApi = mockApi.mockRejectedValueOnce('Something went wrong.');
+
+            renderWithStore({ ui: <ConfirmEmail email={email} /> });
+
+            // Loading
+            await waitFor(expectSpinnerRendered);
+
+            // Error
+            await waitFor(() => {
+                expect(
+                    screen.queryByText(
+                        translates.translations.api.session.unExpectedError
+                    )
+                ).toBeInTheDocument();
+            });
+        });
     });
 });

@@ -7,8 +7,8 @@ import {
     PasswordValidationErrors,
 } from '../../../../../../../shared-types/lib/entities/shared';
 import { getAuthSuccess } from '../../../../../../plugins/gatsby-plugin-redux/store';
-import { SessionForm } from '../../../../../components';
 import { ISignInResponse, SignInApi, signInFailed } from '../../../../../lib';
+import { SessionForm } from '../../../components';
 import { Layout } from './components';
 import { errorLocaleNs, formLocaleNs } from './contants';
 import { initialValues, validationSchema } from './schema';

@@ -2,12 +2,12 @@ import React from 'react';
 import { Router } from '@reach/router';
 import { useTranslation } from 'react-i18next';
 import { PATHS } from '../../../../shared-types/lib';
-import { withAuthentication, WrappedPageProps } from '../../components';
+import { withAuthentication, WrappedPageProps } from './components';
+import { ConfirmEmail } from './confirm-email';
 import { Dashboard } from './dashboard';
 import { localizedPath } from './lib';
 import { SignIn } from './sign-in';
 import { SignUp } from './sign-up';
-import { ConfirmEmail } from './confirm-email';
 
 export default withAuthentication(App);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withUser } from '../../../components/withUser/withUser';
+import { withUser } from '../components';
 import { PageProps } from '../types';
 import { Form } from './components';
 

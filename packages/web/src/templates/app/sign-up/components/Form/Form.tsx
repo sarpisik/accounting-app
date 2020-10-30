@@ -6,8 +6,8 @@ import {
     PasswordValidationErrors,
     UserNameValidationErrors,
 } from '../../../../../../../shared-types/lib/entities/shared';
-import { SessionForm } from '../../../../../components';
 import { ISignUpResponse, SignUpApi, signUpFailed } from '../../../../../lib';
+import { SessionForm } from '../../../components';
 import {
     signInApiErrorConverter,
     signInValidationErrorConverter,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withAuthorization } from '../../../components';
+import { withAuthorization } from '../components';
 import { PageProps } from '../types';
 
 export default withAuthorization(Dashboard);

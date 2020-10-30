@@ -11,7 +11,7 @@ import {
     LocalizedSessionButton,
     LocalizedSessionInput,
     SessionFormLayoutProps,
-} from '../../../../../../../components';
+} from '../../../../../components';
 import { localizedPath } from '../../../../../lib';
 import {
     linksLocaleNs,

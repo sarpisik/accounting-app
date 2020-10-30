@@ -1,13 +1,13 @@
-import { CircularProgress } from '@material-ui/core';
 import React from 'react';
+import { CircularProgress } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { ErrorTypes } from '../../../../../shared-types/lib/entities/shared';
-import { withUser } from '../../../components';
 import {
     ConfirmEmailApi,
     confirmEmailFailed as checkFail,
     IConfirmEmailResponse,
 } from '../../../lib';
+import { withUser } from '../components';
 import { signInValidationErrorConverter } from '../sign-in/components';
 import { PageProps } from '../types';
 import { withEmail } from './components';
